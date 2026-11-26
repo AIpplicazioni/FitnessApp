@@ -148,7 +148,7 @@ dialog textarea{width:100%;font-family:ui-monospace,monospace;font-size:12px}
   <section id="v-train" class="stack">
     <div>
       <h1>Nuova scheda</h1>
-      <p class="lead">Scegli dove sei e cosa hai a disposizione: l'app compone un circuito bilanciato dai tuoi esercizi. Lo storico rende meno probabili gli esercizi fatti di recente, ma non ne esclude nessuno.</p>
+      <p class="lead">Scegli dove sei e cosa hai a disposizione: l'app compone riscaldamento, stazioni bilanciate dai tuoi esercizi e stretching finale. Lo storico rende meno probabili gli esercizi fatti di recente, ma non ne esclude nessuno.</p>
     </div>
     <div class="panel stack">
       <div><h2>Luogo</h2><div class="place" id="placeOpts"></div></div>
@@ -156,21 +156,34 @@ dialog textarea{width:100%;font-family:ui-monospace,monospace;font-size:12px}
       <div><h2>Obiettivo</h2><div class="chips" id="focusOpts"></div></div>
     </div>
     <div class="panel stack">
-      <div><h2>Formato</h2><div class="chips" id="formatOpts"></div><p class="note">AMRAP = più giri possibili nel tempo dato, con ripetizioni fisse per esercizio.</p></div>
+      <div class="row" style="justify-content:space-between"><h2 style="margin:0">Riscaldamento</h2><label class="toggle"><input type="checkbox" id="warmOn"> Includi</label></div>
+      <div class="stack" id="warmPanel">
+        <div class="row">
+          <div class="field">Minuti<div class="stepper"><button data-step="warmMin:-1" aria-label="Meno minuti di riscaldamento">−</button><output id="warmMinOut"></output><button data-step="warmMin:1" aria-label="Più minuti di riscaldamento">+</button></div></div>
+        </div>
+        <div><div class="chips" id="warmModeOpts"></div></div>
+        <div id="warmMachWrap"><div class="note">Macchinario</div><div class="chips" id="warmMachOpts"></div></div>
+        <p class="note" id="warmNote"></p>
+      </div>
+    </div>
+    <div class="panel stack">
+      <div><h2>Formato</h2><div class="chips" id="formatOpts"></div><p class="note">Stazioni = gruppi di esercizi a tempo, ogni stazione ripetuta più volte prima di passare alla successiva. AMRAP = più giri possibili nel tempo dato, con ripetizioni fisse per esercizio.</p></div>
     </div>
     <div class="panel stack" id="intPanel">
+      <div><h2>Stazioni</h2></div>
+      <div class="row">
+        <div class="field">Stazioni<div class="stepper"><button data-step="stCount:-1" aria-label="Meno stazioni">−</button><output id="stCountOut"></output><button data-step="stCount:1" aria-label="Più stazioni">+</button></div></div>
+        <div class="field">Esercizi per stazione<div class="stepper"><button data-step="stEx:-1" aria-label="Meno esercizi per stazione">−</button><output id="stExOut"></output><button data-step="stEx:1" aria-label="Più esercizi per stazione">+</button></div></div>
+        <div class="field">Ripeti ogni stazione<div class="stepper"><button data-step="stReps:-1" aria-label="Meno ripetizioni stazione">−</button><output id="stRepsOut"></output><button data-step="stReps:1" aria-label="Più ripetizioni stazione">+</button></div></div>
+      </div>
+      <p class="note">Valori di partenza per tutte le stazioni: nella scheda puoi cambiare esercizi e ripetizioni di ogni singola stazione.</p>
       <div><h2>Lavoro / recupero</h2><div class="chips" id="intOpts"></div></div>
       <div class="row">
         <label class="field">Lavoro (s)<input id="workS" type="number" min="5" max="600" step="5"></label>
         <label class="field">Recupero (s)<input id="restS" type="number" min="0" max="300" step="5"></label>
         <label class="field">Recupero tra giri (s)<input id="roundRestS" type="number" min="0" max="600" step="15"></label>
+        <label class="field">Recupero tra stazioni (s)<input id="stationRestS" type="number" min="0" max="600" step="15"></label>
       </div>
-      <div class="row">
-        <div class="field">Stazioni<div class="stepper"><button data-step="stations:-1" aria-label="Meno stazioni">−</button><output id="stationsOut"></output><button data-step="stations:1" aria-label="Più stazioni">+</button></div></div>
-        <div class="field">Giri<div class="stepper"><button data-step="rounds:-1" aria-label="Meno giri">−</button><output id="roundsOut"></output><button data-step="rounds:1" aria-label="Più giri">+</button></div></div>
-        <div class="field">Durata<div class="total" id="totalOut"></div></div>
-      </div>
-      <label class="toggle"><input type="checkbox" id="varyRounds"> Esercizi diversi a ogni giro</label>
     </div>
     <div class="panel stack" id="amrapPanel">
       <div><h2>AMRAP</h2></div>
@@ -180,8 +193,17 @@ dialog textarea{width:100%;font-family:ui-monospace,monospace;font-size:12px}
         <div class="field">Blocchi<div class="stepper"><button data-step="amrapBlocks:-1" aria-label="Meno blocchi">−</button><output id="amrapBlocksOut"></output><button data-step="amrapBlocks:1" aria-label="Più blocchi">+</button></div></div>
       </div>
       <label class="field" id="blockRestWrap">Recupero tra blocchi (s)<input id="blockRestS" type="number" min="0" max="600" step="15"></label>
-      <div class="field">Durata totale<div class="total" id="totalOut2"></div></div>
     </div>
+    <div class="panel stack">
+      <div class="row" style="justify-content:space-between"><h2 style="margin:0">Stretching e mobilità</h2><label class="toggle"><input type="checkbox" id="stretchOn"> Includi</label></div>
+      <div class="stack" id="stretchPanel">
+        <div class="row">
+          <div class="field">Minuti<div class="stepper"><button data-step="stretchMin:-1" aria-label="Meno minuti di stretching">−</button><output id="stretchMinOut"></output><button data-step="stretchMin:1" aria-label="Più minuti di stretching">+</button></div></div>
+        </div>
+        <p class="note" id="stretchNote"></p>
+      </div>
+    </div>
+    <div class="field">Durata totale<div class="total" id="totalOut"></div></div>
     <button class="btn block" id="genBtn">Genera scheda</button>
     <p class="warning" id="genWarn" hidden></p>
     <div id="recentWrap" hidden><h2>Schede recenti</h2><div class="hist" id="recentList"></div></div>
@@ -279,17 +301,21 @@ const EQUIP = [
  ['manubri','Manubri'],['kettlebell','Kettlebell'],['bilanciere','Bilanciere'],['panca','Panca'],['rack','Rack'],
  ['sbarra','Sbarra trazioni'],['cavi','Cavi'],['macchine','Macchine'],['landmine','Landmine'],['trx','TRX'],
  ['elastici','Elastici'],['palla_medica','Palla medica'],['slam_ball','Slam ball'],['sandbag','Sandbag'],['box','Box'],
- ['corda_battente','Battle rope'],['vogatore','Vogatore'],['bike','Bike'],['assault_bike','Assault bike'],['tapis','Tapis roulant'],['skierg','SkiErg'],
+ ['corda_battente','Battle rope'],['vogatore','Vogatore'],['bike','Bike'],['assault_bike','Assault bike'],['tapis','Tapis roulant'],['ellittica','Ellittica'],['skierg','SkiErg'],
  ['corda','Corda per saltare'],['slider','Slider'],['bosu','Bosu']
 ];
 const PLACE_EQUIP = { palestra: EQUIP.map(e=>e[0]), casa:['manubri','kettlebell','elastici','corda','slider'], outdoor:['elastici','trx','sbarra','corda'] };
-const FORMATS = [['interval','Intervalli'],['amrap','AMRAP'],['mixed','Intervalli + AMRAP']];
+const FORMATS = [['interval','Stazioni'],['amrap','AMRAP'],['mixed','Stazioni + AMRAP']];
+const MACHINES = { tapis:'Camminata veloce o corsa leggera, aumenta la velocità ogni 2-3 minuti.', ellittica:'Ritmo costante, resistenza bassa che aumenti gradualmente.', vogatore:'Remata fluida a bassa intensità: gambe, busto, braccia. Alza il ritmo verso la fine.', bike:'Pedalata agile, resistenza bassa che aumenti gradualmente.', assault_bike:'Ritmo blando e costante, braccia e gambe insieme.', skierg:'Tirate lunghe e leggere, ritmo progressivo.' };
+const WARM_MODES = [['machine','Cardio a macchina'],['body','Corpo libero (attivazione)'],['mix','Metà e metà']];
+const AUX = new Set(['warmup','mobility']);
 const DEFAULT_REPS = {squat:'10',hinge:'10',lunge:'6+6',push_h:'8',push_v:'8',pull_h:'10',pull_v:'5',core:'10',carry:'20 m',cardio:'10',arms:'10'};
 const repsOf = x => x.reps || DEFAULT_REPS[x.pattern] || '10';
 const safeUrl = u => /^https:\/\/[^\s"'<>]+$/.test(u||'') ? u : '';
 const PATTERNS = [
  ['squat','Squat'],['hinge','Hinge / stacco'],['lunge','Affondi / unilaterale'],['push_h','Spinta orizzontale'],['push_v','Spinta verticale'],
- ['pull_h','Tirata orizzontale'],['pull_v','Tirata verticale'],['core','Core'],['carry','Trasporti'],['cardio','Cardio / metcon'],['arms','Braccia']
+ ['pull_h','Tirata orizzontale'],['pull_v','Tirata verticale'],['core','Core'],['carry','Trasporti'],['cardio','Cardio / metcon'],['arms','Braccia'],
+ ['warmup','Riscaldamento / attivazione'],['mobility','Stretching / mobilità']
 ];
 const FOCUS = {
  total:['Total body',['squat','push_h','hinge','pull_h','cardio','lunge','push_v','core','pull_v','carry']],
@@ -371,7 +397,11 @@ function describeMode(){
 }
 
 // ---------- settings (per viewer) ----------
-const S = Object.assign({ place:'palestra', focus:'total', work:45, rest:15, roundRest:60, stations:6, rounds:3, vary:false, equip:{}, format:'interval', amrapMin:8, amrapEx:4, amrapBlocks:1, blockRest:60 }, ls.get('sp.settings',{}));
+const S = Object.assign({ place:'palestra', focus:'total', work:45, rest:15, roundRest:30, stationRest:90, stCount:4, stEx:3, stReps:3, equip:{}, format:'interval', amrapMin:8, amrapEx:4, amrapBlocks:1, blockRest:60,
+  warmOn:true, warmMin:8, warmMode:'machine', warmMach:'', stretchOn:true, stretchMin:8 }, ls.get('sp.settings',{}));
+const LIM = {stCount:[1,8],stEx:[1,8],stReps:[1,8],amrapMin:[3,30],amrapEx:[2,6],amrapBlocks:[1,4],warmMin:[5,15],stretchMin:[5,15]};
+Object.keys(LIM).forEach(k=>{ S[k]=Math.min(LIM[k][1],Math.max(LIM[k][0],Number(S[k])||LIM[k][0])); });
+const STRETCH_ON=30, STRETCH_CHG=10, WARM_ON=50, WARM_CHG=10, TRANS=15;
 const saveS = () => ls.set('sp.settings',S);
 const equipFor = p => new Set(S.equip[p] || PLACE_EQUIP[p]);
 
@@ -390,45 +420,71 @@ function confirmLeave(){ $('quitConfirm').hidden=false; go('player'); return fal
 // ---------- setup UI ----------
 function chip(label,pressed,attrs='',extra=''){ return `<button type="button" class="chip" aria-pressed="${pressed}" ${attrs}>${label}${extra}</button>`; }
 function compatible(ex,place,eq){ return ex.active!==false && (ex.places||[]).includes(place) && (ex.equipment||[]).every(e=>eq.has(e)); }
+function pool(place,eq,pat){ return data.exercises.filter(x=>compatible(x,place,eq) && (pat? x.pattern===pat : !AUX.has(x.pattern))).map(x=>({...x,equipment:x.equipment||[]})); }
+function machinesFor(eq){ return Object.keys(MACHINES).filter(m=>eq.has(m)); }
+function warmConf(eq){
+  const av=machinesFor(eq), mode = av.length? S.warmMode : 'body', mach = av.includes(S.warmMach)? S.warmMach : av[0]||null;
+  const machSec = mode==='machine'? S.warmMin*60 : mode==='mix'? Math.ceil(S.warmMin/2)*60 : 0;
+  return { av, mode, mach: machSec? mach : null, machSec, bodyN: Math.round((S.warmMin*60-machSec)/(WARM_ON+WARM_CHG)) };
+}
+const stretchN = min => Math.round(min*60/(STRETCH_ON+STRETCH_CHG));
 function renderSetup(){
   const eq = equipFor(S.place);
-  $('placeOpts').innerHTML = PLACES.map(([id,n,d])=>{ const c=data.exercises.filter(x=>compatible(x,id,equipFor(id))).length; return chip(`<strong>${n}</strong><span class="note">${d} · ${c} esercizi</span>`, S.place===id, `data-place="${id}"`); }).join('');
+  $('placeOpts').innerHTML = PLACES.map(([id,n,d])=>{ const c=pool(id,equipFor(id)).length; return chip(`<strong>${n}</strong><span class="note">${d} · ${c} esercizi</span>`, S.place===id, `data-place="${id}"`); }).join('');
   const usedEquip = new Set(data.exercises.filter(x=>(x.places||[]).includes(S.place)).flatMap(x=>x.equipment||[]));
+  Object.keys(MACHINES).forEach(m=>usedEquip.add(m));
   $('equipOpts').innerHTML = EQUIP.map(([id,n])=>chip(esc(n), eq.has(id), `data-eq="${id}"`, usedEquip.has(id)?'':'<small>·0</small>')).join('');
-  $('equipNote').textContent = 'Il corpo libero è sempre incluso. "·0" = nessun esercizio in archivio usa quell\'attrezzo.';
+  $('equipNote').textContent = 'Il corpo libero è sempre incluso. "·0" = nessun esercizio in archivio usa quell\'attrezzo. I macchinari cardio servono anche per il riscaldamento.';
   $('focusOpts').innerHTML = Object.entries(FOCUS).map(([id,[n]])=>chip(n,S.focus===id,`data-focus="${id}"`)).join('');
-  const custom = !INTERVALS.some(([w,r])=>w===S.work&&r===S.rest);
-  $('intOpts').innerHTML = INTERVALS.map(([w,r])=>chip(`${w}/${r}`, w===S.work&&r===S.rest, `data-int="${w}/${r}"`)).join('') + chip('Personalizzato', custom, 'data-int="custom"');
-  $('workS').value=S.work; $('restS').value=S.rest; $('roundRestS').value=S.roundRest;
-  $('stationsOut').textContent=S.stations; $('roundsOut').textContent=S.rounds; $('varyRounds').checked=S.vary;
-  const total = S.rounds*(S.stations*S.work + (S.stations-1)*S.rest) + (S.rounds-1)*S.roundRest;
+  // warm-up
+  const w=warmConf(eq);
+  $('warmOn').checked=S.warmOn; $('warmPanel').hidden=!S.warmOn; $('warmMinOut').textContent=S.warmMin+"'";
+  $('warmModeOpts').innerHTML = w.av.length? WARM_MODES.map(([id,n])=>chip(n,w.mode===id,`data-wmode="${id}"`)).join('') : '';
+  $('warmMachWrap').hidden = !w.mach;
+  $('warmMachOpts').innerHTML = w.av.map(m=>chip(esc(lbl(EQUIP,m)), m===w.mach, `data-wmach="${m}"`)).join('');
+  const wb = pool(S.place,eq,'warmup').length;
+  $('warmNote').textContent = (w.av.length? '' : 'Nessun macchinario cardio tra l\'attrezzatura: riscaldamento a corpo libero. ')
+    + (w.bodyN? `${w.bodyN} esercizi di attivazione da ${WARM_ON}s + ${WARM_CHG}s di cambio (${wb} in archivio).` : `${S.warmMin} minuti continui.`);
+  // format
   $('formatOpts').innerHTML = FORMATS.map(([id,n])=>chip(n,S.format===id,`data-format="${id}"`)).join('');
   const useInt=S.format!=='amrap', useAm=S.format!=='interval';
   $('intPanel').hidden=!useInt; $('amrapPanel').hidden=!useAm;
+  const custom = !INTERVALS.some(([w,r])=>w===S.work&&r===S.rest);
+  $('intOpts').innerHTML = INTERVALS.map(([w,r])=>chip(`${w}/${r}`, w===S.work&&r===S.rest, `data-int="${w}/${r}"`)).join('') + chip('Personalizzato', custom, 'data-int="custom"');
+  $('workS').value=S.work; $('restS').value=S.rest; $('roundRestS').value=S.roundRest; $('stationRestS').value=S.stationRest;
+  $('stCountOut').textContent=S.stCount; $('stExOut').textContent=S.stEx; $('stRepsOut').textContent=S.stReps+'×';
   $('amrapMinOut').textContent=S.amrapMin+"'"; $('amrapExOut').textContent=S.amrapEx; $('amrapBlocksOut').textContent=S.amrapBlocks; $('blockRestS').value=S.blockRest;
   $('blockRestWrap').hidden = !(S.amrapBlocks>1 || S.format==='mixed');
-  const all = planDuration({rounds:useInt?Array(S.rounds).fill(Array(S.stations)):[], work:S.work, rest:S.rest, roundRest:S.roundRest, blockRest:S.blockRest, amraps:useAm?Array(S.amrapBlocks).fill({min:S.amrapMin}):[]});
-  $('totalOut').textContent = dur(useAm? total : all); $('totalOut2').textContent = dur(all);
+  // stretching
+  $('stretchOn').checked=S.stretchOn; $('stretchPanel').hidden=!S.stretchOn; $('stretchMinOut').textContent=S.stretchMin+"'";
+  const sm = pool(S.place,eq,'mobility').length;
+  $('stretchNote').textContent = `${stretchN(S.stretchMin)} posizioni da ${STRETCH_ON}s con ${STRETCH_CHG}s per cambiare posizione. `+(sm? `Esercizi presi dall'archivio (${sm}).` : 'Per ora solo timer: aggiungi esercizi con schema "Stretching / mobilità" in Esercizi per vederli proposti.');
+  $('totalOut').textContent = dur(planDuration(skeleton()));
 }
-function planDuration(p){
-  const R=p.rounds.length, n=R?p.rounds[0].length:0, A=(p.amraps||[]);
-  const iv = R? R*(n*p.work+(n-1)*p.rest)+(R-1)*p.roundRest : 0;
-  const am = A.reduce((a,b)=>a+b.min*60,0) + Math.max(0, A.length-(R?0:1))*(p.blockRest??60);
-  return iv+am;
+function skeleton(){
+  const eq=equipFor(S.place), useInt=S.format!=='amrap', useAm=S.format!=='interval', w=warmConf(eq);
+  return { work:S.work, rest:S.rest, roundRest:S.roundRest, stationRest:S.stationRest, blockRest:S.blockRest,
+    warm: S.warmOn? {min:S.warmMin, mach:w.mach, machSec:w.machSec, ex:Array(w.bodyN).fill(null)} : null,
+    stations: useInt? Array.from({length:S.stCount},()=>({reps:S.stReps, ex:Array(S.stEx).fill(null)})) : [],
+    amraps: useAm? Array.from({length:S.amrapBlocks},()=>({min:S.amrapMin, ex:[]})) : [],
+    stretch: S.stretchOn? {min:S.stretchMin, n:stretchN(S.stretchMin), ex:[]} : null };
 }
+function planDuration(p){ return timeline(p).slice(1).reduce((a,x)=>a+x.d,0); }
 $('v-train').addEventListener('click',e=>{
   const b=e.target.closest('button'); if(!b) return;
   if(b.dataset.place){ S.place=b.dataset.place; }
   else if(b.dataset.eq){ const eq=equipFor(S.place); eq.has(b.dataset.eq)?eq.delete(b.dataset.eq):eq.add(b.dataset.eq); S.equip[S.place]=[...eq]; }
   else if(b.dataset.focus){ S.focus=b.dataset.focus; }
   else if(b.dataset.format){ S.format=b.dataset.format; }
+  else if(b.dataset.wmode){ S.warmMode=b.dataset.wmode; }
+  else if(b.dataset.wmach){ S.warmMach=b.dataset.wmach; }
   else if(b.dataset.int){ if(b.dataset.int==='custom'){ $('workS').focus(); return; } const [w,r]=b.dataset.int.split('/').map(Number); S.work=w; S.rest=r; }
-  else if(b.dataset.step){ const [k,d]=b.dataset.step.split(':'); const lim={stations:[3,12],rounds:[1,8],amrapMin:[3,30],amrapEx:[2,6],amrapBlocks:[1,4]}[k]; S[k]=Math.min(lim[1],Math.max(lim[0],S[k]+Number(d))); }
+  else if(b.dataset.step){ const [k,d]=b.dataset.step.split(':'); const lim=LIM[k]; S[k]=Math.min(lim[1],Math.max(lim[0],S[k]+Number(d))); }
   else return;
   saveS(); renderSetup();
 });
-[['workS','work',5,600],['restS','rest',0,300],['roundRestS','roundRest',0,600],['blockRestS','blockRest',0,600]].forEach(([id,k,mn,mx])=>$(id).addEventListener('change',()=>{ const v=Math.round(Number($(id).value)); S[k]=isFinite(v)?Math.min(mx,Math.max(mn,v)):S[k]; saveS(); renderSetup(); }));
-$('varyRounds').onchange=()=>{ S.vary=$('varyRounds').checked; saveS(); renderSetup(); };
+[['workS','work',5,600],['restS','rest',0,300],['roundRestS','roundRest',0,600],['stationRestS','stationRest',0,600],['blockRestS','blockRest',0,600]].forEach(([id,k,mn,mx])=>$(id).addEventListener('change',()=>{ const v=Math.round(Number($(id).value)); S[k]=isFinite(v)?Math.min(mx,Math.max(mn,v)):S[k]; saveS(); renderSetup(); }));
+['warmOn','stretchOn'].forEach(id=>$(id).onchange=()=>{ S[id]=$(id).checked; saveS(); renderSetup(); });
 
 // ---------- generator ----------
 // history lowers the weight of recently used exercises, never to zero
@@ -443,81 +499,131 @@ function weightedPick(cands,weight){
   for(let i=0;i<cands.length;i++){ r-=ws[i]; if(r<=0) return cands[i]; } return cands[cands.length-1];
 }
 function snap(ex,fallback){ return {id:ex.id,name:ex.name,pattern:ex.pattern,equipment:ex.equipment||[],notes:ex.notes||'',desc:ex.desc||'',img:ex.img||'',ref:ex.ref||'',reps:repsOf(ex),fallback:!!fallback}; }
-function buildRound(pool,slots,usedGlobal,rec){
+function pickOne(pl,pat,used,usedGlobal,rec,prev){
+  const w = ex => { let x = 1/(1+1.2*(rec[ex.id]||0)); if(usedGlobal.has(ex.id)) x*=.15; if(prev && ex.equipment.length && ex.equipment.some(e=>prev.equipment.includes(e))) x*=.7; return Math.max(x,.05); };
+  let c = pl.filter(x=>x.pattern===pat && !used.has(x.id)), fb=false;
+  if(!c.length){ c = pl.filter(x=>!used.has(x.id)); fb=true; }
+  if(!c.length) return null;
+  const ex=weightedPick(c,w); used.add(ex.id); usedGlobal.add(ex.id); return snap(ex,fb);
+}
+function buildRound(pl,slots,usedGlobal,rec){
   const used=new Set(), out=[];
-  slots.forEach(pat=>{
-    const prev=out[out.length-1];
-    const w = ex => { let x = 1/(1+1.2*(rec[ex.id]||0)); if(usedGlobal.has(ex.id)) x*=.15; if(prev && ex.equipment.length && ex.equipment.some(e=>prev.equipment.includes(e))) x*=.7; return Math.max(x,.05); };
-    let c = pool.filter(x=>x.pattern===pat && !used.has(x.id)), fb=false;
-    if(!c.length){ c = pool.filter(x=>!used.has(x.id)); fb=true; }
-    if(!c.length) return;
-    const ex=weightedPick(c,w); used.add(ex.id); usedGlobal.add(ex.id); out.push(snap(ex,fb));
-  });
+  slots.forEach(pat=>{ const x=pickOne(pl,pat,used,usedGlobal,rec,out[out.length-1]); if(x) out.push(x); });
   return out;
 }
+// n distinct picks from an auxiliary pool (warm-up / mobility), cycling if the pool is small
+function pickAux(pl,n,rec){
+  const out=[]; let left=[];
+  for(let i=0;i<n;i++){ if(!left.length) left=[...pl]; if(!left.length) break; const ex=weightedPick(left,x=>Math.max(.05,1/(1+.5*(rec[x.id]||0)))); left=left.filter(x=>x!==ex); out.push(snap(ex,false)); }
+  return out;
+}
+const tplSlot = (tpl,i) => tpl[i%tpl.length];
 let plan=null;
 function generate(){
-  const eq=equipFor(S.place), pool=data.exercises.filter(x=>compatible(x,S.place,eq)).map(x=>({...x,equipment:x.equipment||[]}));
+  const eq=equipFor(S.place), pl=pool(S.place,eq);
   const warn=$('genWarn'); warn.hidden=true;
   const useInt=S.format!=='amrap', useAm=S.format!=='interval';
-  const need=Math.max(useInt?S.stations:0, useAm?S.amrapEx:0);
-  if(pool.length<need){ warn.textContent=`Per ${lbl(PLACES,S.place)} con questa attrezzatura ci sono ${pool.length} esercizi compatibili: ne servono almeno ${need}. Aggiungine in "Esercizi" o riduci stazioni/esercizi.`; warn.hidden=false; return; }
-  const tpl=FOCUS[S.focus][1], slots=Array.from({length:S.stations},(_,i)=>tpl[i%tpl.length]);
-  const rec=recency(), usedGlobal=new Set(), rounds=[];
-  if(useInt){ const first=buildRound(pool,slots,usedGlobal,rec);
-    for(let r=0;r<S.rounds;r++) rounds.push(r===0||!S.vary? first : buildRound(pool,slots,usedGlobal,rec)); }
-  const amraps=[];
-  if(useAm) for(let a=0;a<S.amrapBlocks;a++){ const off=(a*S.amrapEx+(useInt?S.stations:0)); const sl=Array.from({length:S.amrapEx},(_,i)=>tpl[(off+i)%tpl.length]); amraps.push({min:S.amrapMin, slots:sl, ex:buildRound(pool,sl,usedGlobal,rec)}); }
-  plan={ id:'p_'+uidGen(), createdAt:new Date().toISOString(), createdBy:store.uid||null, place:S.place, focus:S.focus, format:S.format, work:S.work, rest:S.rest, roundRest:S.roundRest, blockRest:S.blockRest, vary:S.vary, slots, rounds:rounds.map(r=>r.map(x=>({...x}))), amraps };
+  const need=Math.max(useInt?S.stEx:0, useAm?S.amrapEx:0);
+  if(pl.length<need){ warn.textContent=`Per ${lbl(PLACES,S.place)} con questa attrezzatura ci sono ${pl.length} esercizi compatibili: ne servono almeno ${need}. Aggiungine in "Esercizi" o riduci gli esercizi per stazione.`; warn.hidden=false; return; }
+  const tpl=FOCUS[S.focus][1], rec=recency(), usedGlobal=new Set();
+  const sk=skeleton();
+  const stations = sk.stations.map((st,k)=>{ const slots=Array.from({length:st.ex.length},(_,j)=>tplSlot(tpl,k*st.ex.length+j)); return {reps:st.reps, slots, ex:buildRound(pl,slots,usedGlobal,rec)}; });
+  const off=useInt?S.stCount*S.stEx:0;
+  const amraps = sk.amraps.map((b,a)=>{ const sl=Array.from({length:S.amrapEx},(_,i)=>tplSlot(tpl,off+a*S.amrapEx+i)); return {min:b.min, slots:sl, ex:buildRound(pl,sl,usedGlobal,rec)}; });
+  let warm=null;
+  if(sk.warm){ const wp=pool(S.place,eq,'warmup'); warm={min:sk.warm.min, mach:sk.warm.mach, machSec:sk.warm.machSec, ex:pickAux(wp,sk.warm.ex.length,rec)};
+    if(!warm.ex.length && sk.warm.ex.length){ warm.machSec = warm.mach? warm.min*60 : 0; if(!warm.mach) warm=null; } }
+  const stretch = sk.stretch? {min:sk.stretch.min, n:sk.stretch.n, ex:pickAux(pool(S.place,eq,'mobility'),sk.stretch.n,rec)} : null;
+  plan={ id:'p_'+uidGen(), createdAt:new Date().toISOString(), createdBy:store.uid||null, place:S.place, focus:S.focus, format:S.format, work:S.work, rest:S.rest, roundRest:S.roundRest, stationRest:S.stationRest, blockRest:S.blockRest, warm, stations, amraps, stretch };
   renderPlan(); go('plan');
 }
-function swap(r,i){
-  const eq=equipFor(plan.place), pool=data.exercises.filter(x=>compatible(x,plan.place,eq)).map(x=>({...x,equipment:x.equipment||[]}));
-  if(typeof r==='string'){ const A=plan.amraps[Number(r.slice(1))], cur=A.ex[i], inB=new Set(A.ex.map(x=>x.id)), rec=recency();
-    let c=pool.filter(x=>x.pattern===cur.pattern && !inB.has(x.id)), fb=false; if(!c.length){ c=pool.filter(x=>!inB.has(x.id)); fb=true; } if(!c.length) return;
-    const ex=weightedPick(c,x=>Math.max(.05,1/(1+1.2*(rec[x.id]||0)))); A.ex[i]=snap(ex,fb && ex.pattern!==A.slots[i]); renderPlan(); return; }
-  const inRound=new Set(plan.rounds[r].map(x=>x.id)), cur=plan.rounds[r][i], rec=recency();
-  let c=pool.filter(x=>x.pattern===cur.pattern && !inRound.has(x.id)), fb=false;
-  if(!c.length){ c=pool.filter(x=>!inRound.has(x.id)); fb=true; }
-  if(!c.length) return;
+// old saved plans (circuit of rounds) → one station repeated
+function norm(p){
+  if(!p.stations){ p.stations = (p.rounds&&p.rounds.length)? [{reps:p.rounds.length, slots:p.slots||p.rounds[0].map(x=>x.pattern), ex:p.rounds[0]}] : []; }
+  delete p.rounds; delete p.vary; delete p.slots;
+  p.amraps=p.amraps||[]; p.stationRest=p.stationRest??90; p.roundRest=p.roundRest??60; p.warm=p.warm||null; p.stretch=p.stretch||null;
+  return p;
+}
+function replacement(pl,cur,exclude,slot){
+  const rec=recency();
+  let c=pl.filter(x=>x.pattern===cur.pattern && !exclude.has(x.id)), fb=false;
+  if(!c.length){ c=pl.filter(x=>!exclude.has(x.id)); fb=true; }
+  if(!c.length) return null;
   const ex=weightedPick(c,x=>Math.max(.05,1/(1+1.2*(rec[x.id]||0))));
-  const targets = plan.vary ? [r] : plan.rounds.map((_,k)=>k);
-  targets.forEach(k=>plan.rounds[k][i]=snap(ex,fb && ex.pattern!==plan.slots[i]));
+  return snap(ex, fb && ex.pattern!==slot);
+}
+function swap(key,i){
+  const eq=equipFor(plan.place);
+  if(key==='w'){ const L=plan.warm.ex, x=replacement(pool(plan.place,eq,'warmup'),L[i],new Set(L.map(y=>y.id)),'warmup'); if(x) L[i]=x; }
+  else if(key==='z'){ const L=plan.stretch.ex, x=replacement(pool(plan.place,eq,'mobility'),L[i],new Set(L.map(y=>y.id)),'mobility'); if(x) L[i]=x; }
+  else { const B = key[0]==='a'? plan.amraps[Number(key.slice(1))] : plan.stations[Number(key.slice(1))];
+    const x=replacement(pool(plan.place,eq),B.ex[i],new Set(B.ex.map(y=>y.id)),B.slots[i]); if(x) B.ex[i]=x; }
+  renderPlan();
+}
+function editStation(k,what,d){
+  const st=plan.stations[k];
+  if(what==='reps') st.reps=Math.min(8,Math.max(1,st.reps+d));
+  else if(what==='ex'){
+    if(d<0){ if(st.ex.length>1){ st.ex.pop(); st.slots.pop(); } }
+    else if(st.ex.length<8){ const tpl=FOCUS[plan.focus][1], pat=tplSlot(tpl,k*8+st.ex.length+3), used=new Set(st.ex.map(x=>x.id)), all=new Set(plan.stations.flatMap(s=>s.ex.map(x=>x.id)));
+      const x=pickOne(pool(plan.place,equipFor(plan.place)),pat,used,all,recency(),st.ex[st.ex.length-1]); if(x){ st.ex.push(x); st.slots.push(pat); } }
+  }
+  else if(what==='del' && plan.stations.length>1) plan.stations.splice(k,1);
   renderPlan();
 }
 function renderPlan(){
   const ld=lastDone(), now=Date.now();
+  norm(plan);
   $('planTitle').textContent = FOCUS[plan.focus][0]+' · '+lbl(PLACES,plan.place);
-  plan.amraps=plan.amraps||[];
-  const R=plan.rounds.length, n=R?plan.rounds[0].length:0, A=plan.amraps;
-  const parts=[];
-  if(R) parts.push(`${R} giri × ${n} stazioni · ${plan.work}s/${plan.rest}s · ${plan.roundRest}s tra i giri`);
-  if(A.length) parts.push(`${A.length>1?A.length+' blocchi ':''}AMRAP ${A[0].min}'`);
-  $('planMeta').textContent = parts.join(' + ')+' · '+dur(planDuration(plan));
-  const row=(x,i,key,slot,withReps)=>{ const days = ld[x.id]? Math.floor((now-ld[x.id])/864e5) : null; const img=safeUrl(x.img);
-    return `<div class="st"><span class="n">${withReps?esc(x.reps||repsOf(x)):i+1}</span><div class="body" style="display:flex;gap:10px;min-width:0">${img?`<img class="thumb" src="${esc(img)}" alt="" loading="lazy">`:''}<div style="min-width:0"><div class="nm">${esc(x.name)}</div><div class="meta"><span class="tag">${esc(lbl(PATTERNS,x.pattern))}</span>${x.equipment.length?x.equipment.map(e=>`<span class="tag">${esc(lbl(EQUIP,e))}</span>`).join(''):'<span class="tag">Corpo libero</span>'}${x.fallback?`<span class="tag fb" title="Nessun esercizio per lo schema ${esc(lbl(PATTERNS,slot))}">sostituto</span>`:''}${days!==null?`<span class="tag">fatto ${days===0?'oggi':days+' gg fa'}</span>`:''}</div></div></div><button class="btn ghost small" data-swap="${key}:${i}" aria-label="Cambia ${esc(x.name)}">↻</button></div>`; };
-  const show = plan.vary ? plan.rounds : plan.rounds.slice(0,1);
-  $('planList').innerHTML = show.map((round,r)=>`<article class="round"><header><span>${plan.vary?'Giro '+(r+1):'Circuito · ripeti '+R+'×'}</span><span class="note">${round.length} stazioni · ${plan.work}/${plan.rest}s</span></header>${
-    round.map((x,i)=>row(x,i,r,plan.slots[i],false)).join('') }</article>`).join('')
-  + A.map((b,a)=>`<article class="round"><header><span>${A.length>1?'Blocco '+(a+1)+' · ':''}AMRAP ${b.min}'</span><span class="note">più giri possibili</span></header>${
-    b.ex.map((x,i)=>row(x,i,'a'+a,b.slots[i],true)).join('') }</article>`).join('');
+  const St=plan.stations, A=plan.amraps;
+  $('planMeta').textContent = planSummary(plan)+' · '+dur(planDuration(plan));
+  const row=(x,i,key,slot,lead)=>{ const days = ld[x.id]? Math.floor((now-ld[x.id])/864e5) : null; const img=safeUrl(x.img);
+    return `<div class="st"><span class="n">${esc(lead)}</span><div class="body" style="display:flex;gap:10px;min-width:0">${img?`<img class="thumb" src="${esc(img)}" alt="" loading="lazy">`:''}<div style="min-width:0"><div class="nm">${esc(x.name)}</div><div class="meta"><span class="tag">${esc(lbl(PATTERNS,x.pattern))}</span>${x.equipment.length?x.equipment.map(e=>`<span class="tag">${esc(lbl(EQUIP,e))}</span>`).join(''):'<span class="tag">Corpo libero</span>'}${x.fallback?`<span class="tag fb" title="Nessun esercizio per lo schema ${esc(lbl(PATTERNS,slot))}">sostituto</span>`:''}${days!==null?`<span class="tag">fatto ${days===0?'oggi':days+' gg fa'}</span>`:''}</div></div></div><button class="btn ghost small" data-swap="${key}:${i}" aria-label="Cambia ${esc(x.name)}">↻</button></div>`; };
+  const plain=(lead,name,note)=>`<div class="st"><span class="n">${esc(lead)}</span><div class="body"><div class="nm">${esc(name)}</div>${note?`<div class="meta">${esc(note)}</div>`:''}</div><span></span></div>`;
+  let h='';
+  const W=plan.warm;
+  if(W){ h+=`<article class="round"><header><span>Riscaldamento · ${W.min}'</span><span class="note">${W.ex.length?`${WARM_ON}s + ${WARM_CHG}s cambio`:'continuo'}</span></header>`
+    + (W.mach&&W.machSec? plain(Math.round(W.machSec/60)+"'", lbl(EQUIP,W.mach), MACHINES[W.mach]) : '')
+    + W.ex.map((x,i)=>row(x,i,'w','warmup',String(i+1))).join('') + `</article>`; }
+  h+=St.map((st,k)=>`<article class="round"><header><span>Stazione ${k+1} · ripeti ${st.reps}×</span><span class="row" style="gap:6px"><button class="btn ghost small" data-st="${k}:reps:-1" aria-label="Meno ripetizioni stazione ${k+1}">−</button><button class="btn ghost small" data-st="${k}:reps:1" aria-label="Più ripetizioni stazione ${k+1}">+</button></span></header>${
+    st.ex.map((x,i)=>row(x,i,'s'+k,st.slots[i],String(i+1))).join('')
+    }<div class="row" style="justify-content:space-between;gap:8px;padding:10px 16px;border-top:1px solid var(--line)"><span class="note">${st.ex.length} esercizi · ${plan.work}/${plan.rest}s</span><span class="row" style="gap:6px"><button class="btn ghost small" data-st="${k}:ex:-1">− esercizio</button><button class="btn ghost small" data-st="${k}:ex:1">+ esercizio</button>${St.length>1?`<button class="link" data-st="${k}:del:0" aria-label="Elimina stazione ${k+1}">✕</button>`:''}</span></div></article>`).join('');
+  h+=A.map((b,a)=>`<article class="round"><header><span>${A.length>1?'Blocco '+(a+1)+' · ':''}AMRAP ${b.min}'</span><span class="note">più giri possibili</span></header>${
+    b.ex.map((x,i)=>row(x,i,'a'+a,b.slots[i],x.reps||repsOf(x))).join('') }</article>`).join('');
+  const Z=plan.stretch;
+  if(Z){ h+=`<article class="round"><header><span>Stretching e mobilità · ${Z.min}'</span><span class="note">${Z.n} × ${STRETCH_ON}s + ${STRETCH_CHG}s cambio</span></header>`
+    + (Z.ex.length? Z.ex.map((x,i)=>row(x,i,'z','mobility',String(i+1))).join('') : plain('⏱', `${Z.n} posizioni libere`, 'Timer guidato: cambia posizione al segnale. Esercizi da aggiungere in archivio.'))
+    + `</article>`; }
+  $('planList').innerHTML=h;
 }
-$('planList').addEventListener('click',e=>{ const b=e.target.closest('[data-swap]'); if(!b) return; const [r,i]=b.dataset.swap.split(':'); swap(r[0]==='a'?r:Number(r),Number(i)); });
+$('planList').addEventListener('click',e=>{
+  const s=e.target.closest('[data-st]'); if(s){ const [k,w,d]=s.dataset.st.split(':'); editStation(Number(k),w,Number(d)); return; }
+  const b=e.target.closest('[data-swap]'); if(!b) return; const [r,i]=b.dataset.swap.split(':'); swap(r,Number(i)); });
 $('genBtn').onclick=generate; $('regenBtn').onclick=generate; $('startBtn').onclick=start;
 function renderRecent(){
   const list=data.plans.slice(0,6);
   $('recentWrap').hidden=!list.length;
-  $('recentList').innerHTML=list.map(p=>`<div class="card"><div><strong>${esc((FOCUS[p.focus]||['Scheda'])[0])} · ${esc(lbl(PLACES,p.place))}</strong><p>${new Date(p.createdAt).toLocaleString('it-IT',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})} · ${esc(planSummary(p))} · ${esc([...(p.rounds[0]||[]),...(p.amraps||[]).flatMap(b=>b.ex)].map(x=>x.name).join(', '))}</p></div><div class="acts"><button class="btn ghost small" data-load="${esc(p.id)}">Apri</button></div></div>`).join('');
+  $('recentList').innerHTML=list.map(p0=>{ const p=norm(JSON.parse(JSON.stringify(p0))); return `<div class="card"><div><strong>${esc((FOCUS[p.focus]||['Scheda'])[0])} · ${esc(lbl(PLACES,p.place))}</strong><p>${new Date(p.createdAt).toLocaleString('it-IT',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})} · ${esc(planSummary(p))} · ${esc([...p.stations.flatMap(s=>s.ex),...p.amraps.flatMap(b=>b.ex)].map(x=>x.name).join(', '))}</p></div><div class="acts"><button class="btn ghost small" data-load="${esc(p0.id)}">Apri</button></div></div>`; }).join('');
 }
-$('recentList').addEventListener('click',e=>{ const b=e.target.closest('[data-load]'); if(!b) return; const p=data.plans.find(x=>x.id===b.dataset.load); if(!p) return; plan=JSON.parse(JSON.stringify(p)); plan.id='p_'+uidGen(); plan.createdAt=new Date().toISOString(); plan.createdBy=store.uid||null; renderPlan(); go('plan'); });
+$('recentList').addEventListener('click',e=>{ const b=e.target.closest('[data-load]'); if(!b) return; const p=data.plans.find(x=>x.id===b.dataset.load); if(!p) return; plan=norm(JSON.parse(JSON.stringify(p))); plan.id='p_'+uidGen(); plan.createdAt=new Date().toISOString(); plan.createdBy=store.uid||null; renderPlan(); go('plan'); });
 
-function planSummary(p){ const a=[]; if(p.rounds&&p.rounds.length) a.push(`${p.rounds.length} giri × ${p.rounds[0].length} · ${p.work}/${p.rest}s`); (p.amraps||[]).forEach(b=>a.push(`AMRAP ${b.min}'`)); return a.join(' + '); }
+function planSummary(p){ const a=[]; if(p.warm) a.push(`Risc. ${p.warm.min}'`); const St=p.stations||[]; if(St.length){ const reps=[...new Set(St.map(s=>s.reps))], n=[...new Set(St.map(s=>s.ex.length))]; a.push(`${St.length} stazioni × ${n.join('/')} es. × ${reps.join('/')} · ${p.work}/${p.rest}s`); } (p.amraps||[]).forEach(b=>a.push(`AMRAP ${b.min}'`)); if(p.stretch) a.push(`Stretching ${p.stretch.min}'`); return a.join(' + '); }
 // ---------- timer (timestamp based, no drift) ----------
 const T={ phases:[], i:0, endAt:0, left:0, paused:false, running:false, iv:null, startedAt:0, wake:null, ac:null, lastBeep:-1, laps:[] };
+const ACTIVE=new Set(['work','warm','stretch','amrap']);
 function timeline(p){
-  const ph=[p.rounds.length?{t:'prep',d:10,r:0,s:0}:{t:'prep',d:10,a:0}];
-  p.rounds.forEach((round,r)=>{ round.forEach((x,s)=>{ ph.push({t:'work',d:p.work,r,s}); if(s<round.length-1 && p.rest>0) ph.push({t:'rest',d:p.rest,r,s:s+1}); }); if(r<p.rounds.length-1 && p.roundRest>0) ph.push({t:'roundRest',d:p.roundRest,r:r+1,s:0}); });
-  (p.amraps||[]).forEach((b,a)=>{ const br=p.blockRest??60; if((a>0||p.rounds.length) && br>0) ph.push({t:'roundRest',d:br,a}); ph.push({t:'amrap',d:b.min*60,a}); });
+  const ph=[{t:'prep',d:10}], trans=()=>{ if(ph.length>1) ph.push({t:'trans',d:TRANS}); };
+  const W=p.warm;
+  if(W){ if(W.mach&&W.machSec) ph.push({t:'warm',d:W.machSec,sec:'warm',ex:{name:lbl(EQUIP,W.mach),equipment:[W.mach],desc:MACHINES[W.mach]||'',notes:''},i:0,n:1});
+    const n=W.ex.length; W.ex.forEach((x,i)=>{ ph.push({t:'warm',d:WARM_ON,sec:'warm',ex:x,i,n}); if(i<n-1) ph.push({t:'change',d:WARM_CHG}); }); }
+  const St=p.stations||[];
+  if(St.length) trans();
+  St.forEach((st,k)=>{ for(let g=0;g<st.reps;g++){ st.ex.forEach((x,j)=>{ ph.push({t:'work',d:p.work,k,g,j,ex:x}); if(j<st.ex.length-1 && p.rest>0) ph.push({t:'rest',d:p.rest}); });
+      if(g<st.reps-1 && p.roundRest>0) ph.push({t:'roundRest',d:p.roundRest}); }
+    if(k<St.length-1 && p.stationRest>0) ph.push({t:'stationRest',d:p.stationRest}); });
+  (p.amraps||[]).forEach((b,a)=>{ const br=p.blockRest??60; if(a>0||St.length){ if(br>0) ph.push({t:'blockRest',d:br,a}); } else trans(); ph.push({t:'amrap',d:b.min*60,a}); });
+  const Z=p.stretch;
+  if(Z){ trans(); for(let i=0;i<Z.n;i++){ const x=Z.ex[i]||{name:'Posizione '+(i+1),equipment:[],desc:'Stretching o mobilità a scelta: tieni la posizione respirando lento.',notes:''}; ph.push({t:'stretch',d:STRETCH_ON,ex:x,i,n:Z.n}); if(i<Z.n-1) ph.push({t:'change',d:STRETCH_CHG}); } }
   return ph;
 }
 function beep(freq,len){ try{ T.ac=T.ac||new (window.AudioContext||window.webkitAudioContext)(); const o=T.ac.createOscillator(), g=T.ac.createGain(); o.frequency.value=freq; g.gain.value=.15; o.connect(g); g.connect(T.ac.destination); o.start(); o.stop(T.ac.currentTime+len); }catch(e){} }
@@ -528,7 +634,7 @@ function start(){
   beep(660,.05); wakeLock(true);
   $('quitConfirm').hidden=true; go('player'); clearInterval(T.iv); T.iv=setInterval(tick,200); paint();
 }
-function enter(i,at){ if(i>=T.phases.length) return finish(true); T.i=i; T.endAt=at+T.phases[i].d*1000; T.lastBeep=-1; beep(T.phases[i].t==='work'||T.phases[i].t==='amrap'?880:520,.18); }
+function enter(i,at){ if(i>=T.phases.length) return finish(true); T.i=i; T.endAt=at+T.phases[i].d*1000; T.lastBeep=-1; beep(ACTIVE.has(T.phases[i].t)?880:520,.18); }
 function tick(){
   if(!T.running||T.paused) return;
   let now=Date.now();
@@ -538,37 +644,37 @@ function tick(){
   if(left<=3 && left>=1 && left!==T.lastBeep){ T.lastBeep=left; beep(440,.08); }
   paint();
 }
+const nextActive = from => { for(let k=from;k<T.phases.length;k++) if(ACTIVE.has(T.phases[k].t)) return T.phases[k]; return null; };
 function paint(){
   const ph=T.phases[T.i]; if(!ph) return;
   const left = T.paused? T.left : Math.max(0,(T.endAt-Date.now())/1000);
-  const names={prep:'PRONTI',work:'LAVORO',rest:'RECUPERO',roundRest:ph.a!=null?'RECUPERO BLOCCO':'RECUPERO GIRO',amrap:'AMRAP'};
+  const names={prep:'PRONTI',trans:'PREPARATI',warm:'RISCALDAMENTO',change:'CAMBIO',work:'LAVORO',rest:'RECUPERO',roundRest:'RECUPERO GIRO',stationRest:'CAMBIO STAZIONE',blockRest:'RECUPERO BLOCCO',amrap:'AMRAP',stretch:'STRETCHING'};
   $('phase').textContent=names[ph.t]; $('clock').textContent=fmt(left);
   $('bar').style.transform=`scaleX(${ph.d? left/ph.d : 0})`;
-  $('timerBox').className='timer'+(ph.t==='work'||ph.t==='amrap'?'':ph.t==='prep'?' prep':' rest');
+  $('timerBox').className='timer'+(ACTIVE.has(ph.t)?'':ph.t==='prep'||ph.t==='trans'?' prep':' rest');
   $('pauseBtn').textContent = T.paused?'Riprendi':'Pausa';
   $('prevBtn').disabled = T.i===0;
   $('lapsBox').hidden = ph.t!=='amrap';
-  if(ph.a!=null){
-    const b=plan.amraps[ph.a];
-    $('progress').textContent=`${plan.amraps.length>1?'Blocco '+(ph.a+1)+'/'+plan.amraps.length+' · ':''}AMRAP ${b.min}'`;
+  const cur = ACTIVE.has(ph.t)? ph : nextActive(T.i+1);
+  if(!cur){ $('progress').textContent=''; $('nowLbl').textContent=''; $('nowName').textContent='Fine'; $('nowNote').textContent=''; $('nextLine').textContent=''; return; }
+  if(cur.t==='amrap'){
+    const b=plan.amraps[cur.a];
+    $('progress').textContent=`${plan.amraps.length>1?'Blocco '+(cur.a+1)+'/'+plan.amraps.length+' · ':''}AMRAP ${b.min}'`;
     $('nowLbl').textContent = ph.t==='amrap'?'Più giri possibili':'Prossimo: AMRAP '+b.min+"'";
     $('nowName').innerHTML = `<ul class="amrapList">${b.ex.map(x=>`<li><b>${esc(x.reps||repsOf(x))}</b>${esc(x.name)}</li>`).join('')}</ul>`;
-    $('nowNote').textContent=''; $('lapsOut').textContent=T.laps[ph.a]||0;
-    $('nextLine').innerHTML = ph.t==='amrap' ? (ph.a<plan.amraps.length-1?'Dopo: blocco '+(ph.a+2):'Ultimo blocco') : '';
-    return;
+    $('nowNote').textContent=''; $('lapsOut').textContent=T.laps[cur.a]||0;
+  } else {
+    const ex=cur.ex;
+    if(cur.t==='work'){ const st=plan.stations[cur.k]; $('progress').textContent=`Stazione ${cur.k+1}/${plan.stations.length} · Giro ${cur.g+1}/${st.reps} · Esercizio ${cur.j+1}/${st.ex.length}`; }
+    else $('progress').textContent=`${cur.t==='warm'?'Riscaldamento':'Stretching e mobilità'}${cur.n>1?' · '+(cur.i+1)+'/'+cur.n:''}`;
+    $('nowLbl').textContent = ph===cur? 'Ora' : 'Prossimo';
+    $('nowName').textContent = ex.name;
+    const img=safeUrl(ex.img), ref=safeUrl(ex.ref);
+    $('nowNote').innerHTML = esc([(ex.equipment||[]).map(e=>lbl(EQUIP,e)).join(' · ')||'Corpo libero', ex.notes].filter(Boolean).join(' — '))
+      + ((img||ex.desc)?`<div class="media">${img?`<img src="${esc(img)}" alt="${esc(ex.name)}">`:''}<div>${ex.desc?`<p class="desc">${esc(ex.desc)}</p>`:''}${ref?`<a class="ref" href="${esc(ref)}" target="_blank" rel="noopener">Altre immagini ↗</a>`:''}</div></div>`:'');
   }
-  const round=plan.rounds[ph.r], ex=round[ph.s];
-  const n=round.length;
-  $('progress').textContent=`Giro ${ph.r+1}/${plan.rounds.length} · Stazione ${ph.s+1}/${n}`;
-  $('nowLbl').textContent = ph.t==='work'?'Ora':'Prossimo';
-  $('nowName').textContent = ex.name;
-  const img=safeUrl(ex.img), ref=safeUrl(ex.ref);
-  $('nowNote').innerHTML = esc([ex.equipment.map(e=>lbl(EQUIP,e)).join(' · ')||'Corpo libero', ex.notes].filter(Boolean).join(' — '))
-    + ((img||ex.desc)?`<div class="media">${img?`<img src="${esc(img)}" alt="${esc(ex.name)}">`:''}<div>${ex.desc?`<p class="desc">${esc(ex.desc)}</p>`:''}${ref?`<a class="ref" href="${esc(ref)}" target="_blank" rel="noopener">Altre immagini ↗</a>`:''}</div></div>`:'');
-  let nx=null; for(let k=T.i+1;k<T.phases.length;k++){ if(T.phases[k].a!=null) break; if(T.phases[k].t==='work'){ nx=T.phases[k]; break; } }
-  const nxEx = nx && (ph.t==='work' ? plan.rounds[nx.r][nx.s] : (()=>{ for(let k=T.phases.indexOf(nx)+1;k<T.phases.length;k++) if(T.phases[k].t==='work'&&T.phases[k].a==null) return plan.rounds[T.phases[k].r][T.phases[k].s]; return null; })());
-  const nxA = !nxEx && T.phases.slice(T.i+1).some(p=>p.a!=null);
-  $('nextLine').innerHTML = nxEx? 'Dopo: <b>'+esc(nxEx.name)+'</b>' : nxA ? 'Dopo: <b>AMRAP</b>' : (ph.t==='work'?'Ultima stazione':'');
+  const nx = nextActive(T.phases.indexOf(cur)+1);
+  $('nextLine').innerHTML = nx? 'Dopo: <b>'+esc(nx.t==='amrap'?'AMRAP '+plan.amraps[nx.a].min+"'":nx.ex.name)+'</b>'+(nx.t==='work'&&cur.t==='work'&&nx.k!==cur.k?' (stazione '+(nx.k+1)+')':nx.t!==cur.t&&nx.t!=='amrap'?' ('+(nx.t==='work'?'stazioni':nx.t==='stretch'?'stretching':'riscaldamento')+')':'') : 'Ultimo esercizio';
 }
 $('lapPlus').onclick=()=>{ const ph=T.phases[T.i]; if(!T.running||!ph||ph.a==null) return; T.laps[ph.a]=(T.laps[ph.a]||0)+1; beep(700,.06); paint(); };
 $('lapMinus').onclick=()=>{ const ph=T.phases[T.i]; if(!T.running||!ph||ph.a==null) return; T.laps[ph.a]=Math.max(0,(T.laps[ph.a]||0)-1); paint(); };
@@ -583,14 +689,19 @@ document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==
 function stopTimer(){ clearInterval(T.iv); T.running=false; wakeLock(false); }
 let pending=null;
 function finish(complete){
-  const upto = complete? T.phases.length : T.i+1;
-  const doneWork = T.phases.slice(0, complete? T.phases.length : T.i).filter(p=>p.t==='work');
-  const doneAm = [...new Set(T.phases.slice(0,upto).filter(p=>p.t==='amrap').map(p=>p.a))];
+  const upto = complete? T.phases.length : T.i;
+  const done = T.phases.slice(0, complete? T.phases.length : T.i+1);
+  const doneWork = T.phases.slice(0, upto).filter(p=>p.t==='work');
+  const doneAm = [...new Set(done.filter(p=>p.t==='amrap').map(p=>p.a))];
   stopTimer(); beep(990,.4);
-  const allEx=[...plan.rounds.flat(), ...(plan.amraps||[]).flatMap(b=>b.ex)];
-  const ids=[...new Set([...(complete? plan.rounds.flat() : doneWork.map(p=>plan.rounds[p.r][p.s])), ...doneAm.flatMap(a=>plan.amraps[a].ex)].map(x=>x.id))];
-  const names=[...new Set(allEx.filter(x=>ids.includes(x.id)).map(x=>x.name))];
-  pending={ id:'s_'+uidGen(), kind:'session', date:new Date().toISOString(), place:plan.place, focus:plan.focus, format:plan.format||'interval', work:plan.work, rest:plan.rest, rounds:plan.rounds.length, stations:plan.rounds.length?plan.rounds[0].length:0, amraps:(plan.amraps||[]).map((b,a)=>({min:b.min,laps:T.laps[a]||0})), complete, durationSec:Math.round((Date.now()-T.startedAt)/1000), exIds:ids, exNames:names, rpe:null, note:'' };
+  const mainEx=[...doneWork.map(p=>p.ex), ...doneAm.flatMap(a=>plan.amraps[a].ex)];
+  const ids=[...new Set(mainEx.map(x=>x.id))];
+  const names=[...new Set(mainEx.map(x=>x.name))];
+  const St=plan.stations;
+  pending={ id:'s_'+uidGen(), kind:'session', date:new Date().toISOString(), place:plan.place, focus:plan.focus, format:plan.format||'interval', work:plan.work, rest:plan.rest,
+    stCount:St.length, stEx:[...new Set(St.map(s=>s.ex.length))].join('/'), stReps:[...new Set(St.map(s=>s.reps))].join('/'),
+    warmMin:plan.warm?plan.warm.min:0, stretchMin:plan.stretch?plan.stretch.min:0,
+    amraps:(plan.amraps||[]).map((b,a)=>({min:b.min,laps:T.laps[a]||0})), complete, durationSec:Math.round((Date.now()-T.startedAt)/1000), exIds:ids, exNames:names, rpe:null, note:'' };
   $('doneMeta').textContent = (complete?'Completato':'Interrotto')+` · ${dur(pending.durationSec)} · ${names.length} esercizi`+pending.amraps.map(b=>` · AMRAP ${b.min}': ${b.laps} giri`).join('');
   $('rpe').value=''; $('doneNote').value=''; $('saveMsg').textContent=''; $('saveSession').disabled=false;
   go('done');
@@ -675,7 +786,7 @@ function renderHistory(){
   const h=[...data.history].sort((a,b)=>b.date.localeCompare(a.date));
   const month=h.filter(x=>Date.now()-new Date(x.date).getTime()<30*864e5);
   $('histStats').textContent = h.length? `${h.length} allenamenti · ${month.length} negli ultimi 30 giorni · ${dur(month.reduce((a,x)=>a+(x.durationSec||0),0))} totali nel mese` : '';
-  $('histList').innerHTML = h.length? h.map(x=>`<div class="card"><div><strong class="when">${new Date(x.date).toLocaleDateString('it-IT',{weekday:'short',day:'numeric',month:'short'})}</strong> · ${esc((FOCUS[x.focus]||['—'])[0])} · ${esc(lbl(PLACES,x.place))}${x.complete?'':' <span class="tag fb">parziale</span>'}<p>${[x.rounds?`${x.rounds}×${x.stations} · ${x.work}/${x.rest}s`:'', ...(x.amraps||[]).map(b=>`AMRAP ${b.min}' · ${b.laps} giri`)].filter(Boolean).join(' + ')} · ${dur(x.durationSec||0)}${x.rpe?' · RPE '+x.rpe:''}</p><p>${esc((x.exNames||[]).join(', '))}</p>${x.note?`<p><em>${esc(x.note)}</em></p>`:''}</div><div class="acts"><button class="link" data-del="${esc(x.id)}" aria-label="Elimina allenamento">✕</button></div></div>`).join('') : '<div class="empty">Nessun allenamento salvato. A fine allenamento premi "Salva nello storico".</div>';
+  $('histList').innerHTML = h.length? h.map(x=>`<div class="card"><div><strong class="when">${new Date(x.date).toLocaleDateString('it-IT',{weekday:'short',day:'numeric',month:'short'})}</strong> · ${esc((FOCUS[x.focus]||['—'])[0])} · ${esc(lbl(PLACES,x.place))}${x.complete?'':' <span class="tag fb">parziale</span>'}<p>${[x.warmMin?`Risc. ${x.warmMin}'`:'', x.stCount?`${x.stCount} stazioni × ${x.stEx} es. × ${x.stReps} · ${x.work}/${x.rest}s`:x.rounds?`${x.rounds}×${x.stations} · ${x.work}/${x.rest}s`:'', ...(x.amraps||[]).map(b=>`AMRAP ${b.min}' · ${b.laps} giri`), x.stretchMin?`Stretching ${x.stretchMin}'`:''].filter(Boolean).join(' + ')} · ${dur(x.durationSec||0)}${x.rpe?' · RPE '+x.rpe:''}</p><p>${esc((x.exNames||[]).join(', '))}</p>${x.note?`<p><em>${esc(x.note)}</em></p>`:''}</div><div class="acts"><button class="link" data-del="${esc(x.id)}" aria-label="Elimina allenamento">✕</button></div></div>`).join('') : '<div class="empty">Nessun allenamento salvato. A fine allenamento premi "Salva nello storico".</div>';
 }
 $('histList').addEventListener('click',async e=>{ const b=e.target.closest('[data-del]'); if(!b) return; if(b.dataset.armed){ try{ await store.deleteSession(b.dataset.del); }catch(err){} } else { b.dataset.armed='1'; b.textContent='Elimina?'; } });
 
