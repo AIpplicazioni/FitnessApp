@@ -295,6 +295,10 @@ dialog textarea{width:100%;font-family:ui-monospace,monospace;font-size:12px}
 <script>
 (() => {
 'use strict';
+// GitHub Pages lets browsers cache index.html for up to 10 min: check for a newer published version and reload once
+const APP_VERSION='2026-11-26.5';
+(async()=>{ try{ const r=await fetch(location.pathname+'?v='+Date.now(),{cache:'no-store'}); const m=(await r.text()).match(/APP_VERSION='([^']+)'/);
+  if(m && m[1]!==APP_VERSION){ await fetch(location.pathname,{cache:'reload'}); let k='sp.reloaded.'+m[1]; let done=false; try{ done=sessionStorage.getItem(k); sessionStorage.setItem(k,'1'); }catch(e){} if(!done) location.reload(); } }catch(e){} })();
 // ---------- vocabulary ----------
 const PLACES = [['palestra','Palestra','Focus attuale'],['casa','Casa','Base pronta'],['outdoor','Outdoor','Base pronta']];
 // only equipment used by exercises in the library, plus cardio machines for the warm-up; kept in alphabetical order

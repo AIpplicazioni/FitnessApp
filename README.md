@@ -9,4 +9,4 @@ Sito statico: `index.html` + `esercizi.json`. Nessun server, nessun login.
 - Parte centrale: stazioni (N stazioni × esercizi per stazione × ripetizioni della stazione, modificabili per singola stazione nella scheda), AMRAP (blocchi di N minuti, più giri possibili, contatore giri), oppure entrambi.
 - Immagini: dataset pubblico [free-exercise-db](https://github.com/yuhonas/free-exercise-db) (Unlicense); dove manca, link a una ricerca immagini.
 
-Pubblicazione: GitHub → Settings → Pages → Deploy from branch `main` / root.
+Pubblicazione: GitHub → Settings → Pages → Deploy from branch `main` / root. A ogni modifica di `index.html` aggiorna `APP_VERSION`: le pagine già aperte o in cache la confrontano con quella pubblicata e si ricaricano da sole.
