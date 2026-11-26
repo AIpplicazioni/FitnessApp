@@ -12,123 +12,10 @@
   ],
   "notes": "KB al petto, gomiti dentro le ginocchia",
   "active": true,
-  "example": true
- },
- {
-  "id": "ex-back-squat",
-  "name": "Back squat",
-  "pattern": "squat",
-  "equipment": [
-   "bilanciere",
-   "rack"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-front-squat",
-  "name": "Front squat",
-  "pattern": "squat",
-  "equipment": [
-   "bilanciere",
-   "rack"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-air-squat",
-  "name": "Air squat",
-  "pattern": "squat",
-  "equipment": [],
-  "places": [
-   "palestra",
-   "casa",
-   "outdoor"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-leg-press",
-  "name": "Leg press",
-  "pattern": "squat",
-  "equipment": [
-   "macchine"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-wall-ball",
-  "name": "Wall ball",
-  "pattern": "squat",
-  "equipment": [
-   "palla_medica"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "squat + lancio al bersaglio",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-db-thruster",
-  "name": "Thruster manubri",
-  "pattern": "squat",
-  "equipment": [
-   "manubri"
-  ],
-  "places": [
-   "palestra",
-   "casa"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-db-rdl",
-  "name": "Stacco rumeno manubri",
-  "pattern": "hinge",
-  "equipment": [
-   "manubri"
-  ],
-  "places": [
-   "palestra",
-   "casa"
-  ],
-  "notes": "schiena neutra, anca indietro",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-deadlift",
-  "name": "Stacco da terra",
-  "pattern": "hinge",
-  "equipment": [
-   "bilanciere"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
+  "reps": "10",
+  "desc": "Kettlebell tenuto al petto, piedi poco oltre le spalle: scendi in squat profondo con busto eretto e risali spingendo sui talloni.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Goblet_Squat/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=goblet+squat+kettlebell"
  },
  {
   "id": "ex-kb-swing",
@@ -143,42 +30,15 @@
   ],
   "notes": "spinta d'anca, braccia passive",
   "active": true,
-  "example": true
+  "reps": "10",
+  "desc": "Hinge d'anca: porta il kettlebell tra le gambe e spingilo fino all'altezza del petto con un'estensione esplosiva dei fianchi, braccia rilassate.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/One-Arm_Kettlebell_Swings/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=kettlebell+swing"
  },
  {
-  "id": "ex-hip-thrust",
-  "name": "Hip thrust bilanciere",
-  "pattern": "hinge",
-  "equipment": [
-   "bilanciere",
-   "panca"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-good-morning",
-  "name": "Good morning",
-  "pattern": "hinge",
-  "equipment": [
-   "bilanciere",
-   "rack"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-glute-bridge",
-  "name": "Glute bridge",
-  "pattern": "hinge",
+  "id": "ex-burpee",
+  "name": "Burpee",
+  "pattern": "cardio",
   "equipment": [],
   "places": [
    "palestra",
@@ -187,57 +47,15 @@
   ],
   "notes": "",
   "active": true,
-  "example": true
+  "reps": "6",
+  "desc": "Da in piedi scendi con le mani a terra, salta in plank, petto a terra, torna con i piedi alle mani e chiudi con un salto.",
+  "img": "",
+  "ref": "https://www.google.com/search?tbm=isch&q=burpee+exercise"
  },
  {
-  "id": "ex-reverse-lunge-db",
-  "name": "Affondi indietro manubri",
-  "pattern": "lunge",
-  "equipment": [
-   "manubri"
-  ],
-  "places": [
-   "palestra",
-   "casa"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-bulgarian",
-  "name": "Bulgarian split squat",
-  "pattern": "lunge",
-  "equipment": [
-   "manubri",
-   "panca"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-step-up",
-  "name": "Step-up su box",
-  "pattern": "lunge",
-  "equipment": [
-   "box",
-   "manubri"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-walking-lunge",
-  "name": "Walking lunge",
-  "pattern": "lunge",
+  "id": "ex-hollow",
+  "name": "Hollow hold",
+  "pattern": "core",
   "equipment": [],
   "places": [
    "palestra",
@@ -246,52 +64,10 @@
   ],
   "notes": "",
   "active": true,
-  "example": true
- },
- {
-  "id": "ex-lateral-lunge",
-  "name": "Affondo laterale",
-  "pattern": "lunge",
-  "equipment": [],
-  "places": [
-   "palestra",
-   "casa",
-   "outdoor"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-db-bench",
-  "name": "Panca piana manubri",
-  "pattern": "push_h",
-  "equipment": [
-   "manubri",
-   "panca"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-bb-bench",
-  "name": "Panca piana bilanciere",
-  "pattern": "push_h",
-  "equipment": [
-   "bilanciere",
-   "panca",
-   "rack"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
+  "reps": "20\"",
+  "desc": "Supino, zona lombare schiacciata a terra, gambe e spalle sollevate con braccia tese oltre la testa: mantieni la posizione a \"banana\".",
+  "img": "",
+  "ref": "https://www.google.com/search?tbm=isch&q=hollow+body+hold"
  },
  {
   "id": "ex-push-up",
@@ -305,139 +81,10 @@
   ],
   "notes": "",
   "active": true,
-  "example": true
- },
- {
-  "id": "ex-cable-press",
-  "name": "Chest press ai cavi",
-  "pattern": "push_h",
-  "equipment": [
-   "cavi"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-trx-push",
-  "name": "Push-up TRX",
-  "pattern": "push_h",
-  "equipment": [
-   "trx"
-  ],
-  "places": [
-   "palestra",
-   "outdoor"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-db-press",
-  "name": "Military press manubri",
-  "pattern": "push_v",
-  "equipment": [
-   "manubri"
-  ],
-  "places": [
-   "palestra",
-   "casa"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-landmine-press",
-  "name": "Landmine press",
-  "pattern": "push_v",
-  "equipment": [
-   "landmine",
-   "bilanciere"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-push-press",
-  "name": "Push press bilanciere",
-  "pattern": "push_v",
-  "equipment": [
-   "bilanciere",
-   "rack"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-arnold",
-  "name": "Arnold press",
-  "pattern": "push_v",
-  "equipment": [
-   "manubri"
-  ],
-  "places": [
-   "palestra",
-   "casa"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-pike-pushup",
-  "name": "Pike push-up",
-  "pattern": "push_v",
-  "equipment": [],
-  "places": [
-   "palestra",
-   "casa",
-   "outdoor"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-db-row",
-  "name": "Rematore manubrio su panca",
-  "pattern": "pull_h",
-  "equipment": [
-   "manubri",
-   "panca"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-bb-row",
-  "name": "Rematore bilanciere",
-  "pattern": "pull_h",
-  "equipment": [
-   "bilanciere"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
+  "reps": "8",
+  "desc": "Mani sotto le spalle, corpo in linea dalla testa ai talloni: scendi col petto vicino a terra e spingi.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Pushups/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=push+up"
  },
  {
   "id": "ex-trx-row",
@@ -452,80 +99,10 @@
   ],
   "notes": "",
   "active": true,
-  "example": true
- },
- {
-  "id": "ex-seated-row",
-  "name": "Pulley basso",
-  "pattern": "pull_h",
-  "equipment": [
-   "cavi"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-face-pull",
-  "name": "Face pull",
-  "pattern": "pull_h",
-  "equipment": [
-   "cavi"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-pull-up",
-  "name": "Trazioni",
-  "pattern": "pull_v",
-  "equipment": [
-   "sbarra"
-  ],
-  "places": [
-   "palestra",
-   "outdoor"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-lat-pull",
-  "name": "Lat machine",
-  "pattern": "pull_v",
-  "equipment": [
-   "cavi"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-band-pullup",
-  "name": "Trazioni assistite con elastico",
-  "pattern": "pull_v",
-  "equipment": [
-   "sbarra",
-   "elastici"
-  ],
-  "places": [
-   "palestra",
-   "outdoor"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
+  "reps": "12",
+  "desc": "Impugna le maniglie TRX, corpo inclinato e rigido: tira il petto verso le mani stringendo le scapole.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Suspended_Row/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=trx+row"
  },
  {
   "id": "ex-plank",
@@ -539,63 +116,10 @@
   ],
   "notes": "",
   "active": true,
-  "example": true
- },
- {
-  "id": "ex-dead-bug",
-  "name": "Dead bug",
-  "pattern": "core",
-  "equipment": [],
-  "places": [
-   "palestra",
-   "casa",
-   "outdoor"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-pallof",
-  "name": "Pallof press",
-  "pattern": "core",
-  "equipment": [
-   "cavi"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "anti-rotazione",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-russian-twist",
-  "name": "Russian twist palla medica",
-  "pattern": "core",
-  "equipment": [
-   "palla_medica"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-hollow",
-  "name": "Hollow hold",
-  "pattern": "core",
-  "equipment": [],
-  "places": [
-   "palestra",
-   "casa",
-   "outdoor"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
+  "reps": "30\"",
+  "desc": "Appoggio su avambracci e punte, corpo in linea, glutei e addome contratti.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Plank/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=forearm+plank"
  },
  {
   "id": "ex-mountain",
@@ -609,138 +133,33 @@
   ],
   "notes": "",
   "active": true,
-  "example": true
+  "reps": "20",
+  "desc": "Da plank sulle mani porta alternativamente le ginocchia al petto a ritmo sostenuto, bacino basso.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Mountain_Climbers/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=mountain+climber+exercise"
  },
  {
-  "id": "ex-farmer",
-  "name": "Farmer walk",
-  "pattern": "carry",
+  "id": "ex-trx-push",
+  "name": "Push-up TRX",
+  "pattern": "push_h",
   "equipment": [
-   "manubri"
+   "trx"
   ],
   "places": [
-   "palestra"
+   "palestra",
+   "outdoor"
   ],
-  "notes": "",
+  "notes": "TRX di spalle, piegamenti in appoggio sulle maniglie",
   "active": true,
-  "example": true
+  "reps": "8",
+  "desc": "Di spalle all'ancoraggio, mani sulle maniglie TRX: piegamento mantenendo il corpo in linea; più sei inclinato, più è difficile.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Suspended_Push-Up/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=trx+push+up"
  },
  {
-  "id": "ex-suitcase",
-  "name": "Suitcase carry",
-  "pattern": "carry",
-  "equipment": [
-   "kettlebell"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "un solo lato, busto dritto",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-sandbag-carry",
-  "name": "Sandbag bear-hug carry",
-  "pattern": "carry",
-  "equipment": [
-   "sandbag"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-row-erg",
-  "name": "Vogatore",
-  "pattern": "cardio",
-  "equipment": [
-   "vogatore"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-assault",
-  "name": "Assault bike",
-  "pattern": "cardio",
-  "equipment": [
-   "assault_bike"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-bike",
-  "name": "Bike",
-  "pattern": "cardio",
-  "equipment": [
-   "bike"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-tread",
-  "name": "Tapis roulant sprint",
-  "pattern": "cardio",
-  "equipment": [
-   "tapis"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-ski",
-  "name": "SkiErg",
-  "pattern": "cardio",
-  "equipment": [
-   "skierg"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-battle-rope",
-  "name": "Battle rope",
-  "pattern": "cardio",
-  "equipment": [
-   "corda_battente"
-  ],
-  "places": [
-   "palestra"
-  ],
-  "notes": "",
-  "active": true,
-  "example": true
- },
- {
-  "id": "ex-burpee",
-  "name": "Burpee",
-  "pattern": "cardio",
+  "id": "ex-air-squat",
+  "name": "Air squat",
+  "pattern": "squat",
   "equipment": [],
   "places": [
    "palestra",
@@ -749,40 +168,453 @@
   ],
   "notes": "",
   "active": true,
-  "example": true
+  "reps": "12",
+  "desc": "Squat a corpo libero: piedi larghezza spalle, scendi sotto il parallelo con busto alto e ginocchia in linea con le punte.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Bodyweight_Squat/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=air+squat"
  },
  {
-  "id": "ex-slam",
-  "name": "Slam ball",
+  "id": "ex-db-rdl",
+  "name": "Stacco rumeno manubri",
+  "pattern": "hinge",
+  "equipment": [
+   "manubri"
+  ],
+  "places": [
+   "palestra",
+   "casa"
+  ],
+  "notes": "schiena neutra, anca indietro",
+  "active": true,
+  "reps": "10",
+  "desc": "Manubri davanti alle cosce, ginocchia morbide: spingi indietro i fianchi facendo scendere i pesi lungo le gambe, schiena neutra, poi risali.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Stiff-Legged_Dumbbell_Deadlift/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=dumbbell+romanian+deadlift"
+ },
+ {
+  "id": "ex-db-press",
+  "name": "Military press manubri",
+  "pattern": "push_v",
+  "equipment": [
+   "manubri"
+  ],
+  "places": [
+   "palestra",
+   "casa"
+  ],
+  "notes": "",
+  "active": true,
+  "reps": "8",
+  "desc": "In piedi, manubri alle spalle: spingi sopra la testa fino a braccia tese senza inarcare la schiena.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Standing_Dumbbell_Press/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=dumbbell+overhead+press"
+ },
+ {
+  "id": "ex-pushup-ecc",
+  "name": "Push-up eccentrico",
+  "pattern": "push_h",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "Discesa lenta 3–5\"",
+  "reps": "6",
+  "active": true,
+  "desc": "Push-up con discesa controllata di 3–5 secondi, risalita normale.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Pushups/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=eccentric+push+up"
+ },
+ {
+  "id": "ex-pushup-ladder",
+  "name": "Push-up ladder",
+  "pattern": "push_h",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "Scala 1·2·3·4… (o 2·4·6·8) con 5\" di eccentrica; tra un gradino e l'altro 8 squat jump o jump rope",
+  "reps": "ladder",
+  "active": true,
+  "desc": "Scala di push-up: 1 ripetizione, poi 2, 3, 4… (o 2, 4, 6, 8) alternando ogni gradino con l'esercizio indicato, fino allo scadere del tempo.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Pushups/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=push+up+ladder"
+ },
+ {
+  "id": "ex-squat-jump",
+  "name": "Squat jump",
+  "pattern": "squat",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "",
+  "reps": "10",
+  "active": true,
+  "desc": "Squat e salto verticale esplosivo, atterraggio morbido tornando subito in squat.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Freehand_Jump_Squat/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=squat+jump"
+ },
+ {
+  "id": "ex-jump-lunge",
+  "name": "Jump lunge (affondi saltati)",
+  "pattern": "lunge",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "Alternati",
+  "reps": "4+4",
+  "active": true,
+  "desc": "Da affondo salta e inverti le gambe in aria, atterrando nell'affondo opposto.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Split_Jump/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=jump+lunge"
+ },
+ {
+  "id": "ex-trx-row-1arm",
+  "name": "TRX row monobraccio",
+  "pattern": "pull_h",
+  "equipment": [
+   "trx"
+  ],
+  "places": [
+   "palestra",
+   "outdoor"
+  ],
+  "notes": "",
+  "reps": "6+6",
+  "active": true,
+  "desc": "Rematore TRX con un braccio solo: busto stabile senza ruotare, tira il gomito indietro vicino al fianco.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Suspended_Row/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=single+arm+trx+row"
+ },
+ {
+  "id": "ex-trx-pistol",
+  "name": "Pistol squat assistito TRX",
+  "pattern": "lunge",
+  "equipment": [
+   "trx"
+  ],
+  "places": [
+   "palestra",
+   "outdoor"
+  ],
+  "notes": "",
+  "reps": "5+5",
+  "active": true,
+  "desc": "Squat su una gamba tenendo le maniglie TRX per aiutarti; l'altra gamba tesa in avanti.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Kettlebell_Pistol_Squat/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=trx+assisted+pistol+squat"
+ },
+ {
+  "id": "ex-v-ups",
+  "name": "V-ups",
+  "pattern": "core",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "",
+  "reps": "12",
+  "active": true,
+  "desc": "Supino a braccia tese: solleva insieme busto e gambe tese cercando di toccare i piedi, poi scendi controllato.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Jackknife_Sit-Up/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=v+up+exercise"
+ },
+ {
+  "id": "ex-russian-twist-bw",
+  "name": "Russian twist",
+  "pattern": "core",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "",
+  "reps": "6+6",
+  "active": true,
+  "desc": "Seduto con busto inclinato e piedi sollevati (o a terra): ruota il busto da un lato all'altro portando le mani accanto all'anca.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Russian_Twist/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=russian+twist"
+ },
+ {
+  "id": "ex-kb-push-press",
+  "name": "Push press KB",
+  "pattern": "push_v",
+  "equipment": [
+   "kettlebell"
+  ],
+  "places": [
+   "palestra",
+   "casa"
+  ],
+  "notes": "",
+  "reps": "8",
+  "active": true,
+  "desc": "Kettlebell in rack alla spalla: piccolo piegamento delle ginocchia e spinta esplosiva per portarlo sopra la testa.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/One-Arm_Kettlebell_Push_Press/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=kettlebell+push+press"
+ },
+ {
+  "id": "ex-kb-clean",
+  "name": "Clean KB",
+  "pattern": "hinge",
+  "equipment": [
+   "kettlebell"
+  ],
+  "places": [
+   "palestra",
+   "casa"
+  ],
+  "notes": "",
+  "reps": "6",
+  "active": true,
+  "desc": "Dal basso, con spinta dei fianchi, porta il kettlebell in posizione rack alla spalla senza farlo sbattere sull'avambraccio.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/One-Arm_Kettlebell_Clean/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=kettlebell+clean"
+ },
+ {
+  "id": "ex-kb-rdl",
+  "name": "Stacco rumeno KB",
+  "pattern": "hinge",
+  "equipment": [
+   "kettlebell"
+  ],
+  "places": [
+   "palestra",
+   "casa"
+  ],
+  "notes": "Alternativa allo swing",
+  "reps": "10",
+  "active": true,
+  "desc": "Stacco rumeno con kettlebell: fianchi indietro, schiena neutra, peso vicino alle gambe; alternativa più lenta allo swing.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Stiff-Legged_Dumbbell_Deadlift/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=kettlebell+romanian+deadlift"
+ },
+ {
+  "id": "ex-kb-lunge",
+  "name": "Affondi indietro KB",
+  "pattern": "lunge",
+  "equipment": [
+   "kettlebell"
+  ],
+  "places": [
+   "palestra",
+   "casa"
+  ],
+  "notes": "",
+  "reps": "6+6",
+  "active": true,
+  "desc": "Kettlebell in mano o al petto: passo indietro e scendi finché il ginocchio posteriore sfiora terra, poi torna.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Dumbbell_Rear_Lunge/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=kettlebell+reverse+lunge"
+ },
+ {
+  "id": "ex-bear-tap",
+  "name": "Bear plank con tocco spalle",
+  "pattern": "core",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "Ginocchia sollevate a pochi cm da terra, tocco spalla alternato",
+  "reps": "8+8",
+  "active": true,
+  "desc": "Quadrupedia con ginocchia sollevate a pochi cm da terra: tocca la spalla opposta con una mano alla volta senza muovere il bacino.",
+  "img": "",
+  "ref": "https://www.google.com/search?tbm=isch&q=bear+plank+shoulder+tap"
+ },
+ {
+  "id": "ex-plank-tap",
+  "name": "Plank shoulder tap",
+  "pattern": "core",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "Plank sulle mani, tocco spalla alternato",
+  "reps": "8+8",
+  "active": true,
+  "desc": "Plank sulle mani a piedi divaricati: tocca la spalla opposta alternando le mani, bacino fermo.",
+  "img": "",
+  "ref": "https://www.google.com/search?tbm=isch&q=plank+shoulder+tap"
+ },
+ {
+  "id": "ex-renegade-row",
+  "name": "Renegade row manubri",
+  "pattern": "pull_h",
+  "equipment": [
+   "manubri"
+  ],
+  "places": [
+   "palestra",
+   "casa"
+  ],
+  "notes": "Plank sui manubri, rematore alternato",
+  "reps": "6+6",
+  "active": true,
+  "desc": "Plank sulle mani appoggiate ai manubri: rematore con un braccio alla volta mantenendo il bacino parallelo al suolo.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Alternating_Renegade_Row/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=renegade+row+dumbbell"
+ },
+ {
+  "id": "ex-trx-skater",
+  "name": "Skater squat TRX",
+  "pattern": "lunge",
+  "equipment": [
+   "trx"
+  ],
+  "places": [
+   "palestra",
+   "outdoor"
+  ],
+  "notes": "",
+  "reps": "6+6",
+  "active": true,
+  "desc": "Tenendo le maniglie TRX, squat su una gamba portando l'altra piegata dietro, ginocchio posteriore verso terra.",
+  "img": "",
+  "ref": "https://www.google.com/search?tbm=isch&q=trx+skater+squat"
+ },
+ {
+  "id": "ex-sb-squat",
+  "name": "Squat sandbag",
+  "pattern": "squat",
+  "equipment": [
+   "sandbag"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "reps": "10",
+  "active": true,
+  "desc": "Sandbag al petto (front) o in spalla: squat profondo con busto eretto.",
+  "img": "",
+  "ref": "https://www.google.com/search?tbm=isch&q=sandbag+squat"
+ },
+ {
+  "id": "ex-sb-thruster",
+  "name": "Thruster sandbag",
+  "pattern": "squat",
+  "equipment": [
+   "sandbag"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "reps": "8",
+  "active": true,
+  "desc": "Sandbag al petto: squat completo e, risalendo, spinta continua del sacco sopra la testa.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Kettlebell_Thruster/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=sandbag+thruster"
+ },
+ {
+  "id": "ex-sb-lunge",
+  "name": "Affondi con sandbag",
+  "pattern": "lunge",
+  "equipment": [
+   "sandbag"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "reps": "6+6",
+  "active": true,
+  "desc": "Sandbag al petto o in spalla: affondi alternati mantenendo il busto verticale.",
+  "img": "",
+  "ref": "https://www.google.com/search?tbm=isch&q=sandbag+lunge"
+ },
+ {
+  "id": "ex-burpee-lateral",
+  "name": "Burpee + salto laterale",
+  "pattern": "cardio",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "",
+  "reps": "6",
+  "active": true,
+  "desc": "Burpee seguito da un salto laterale (sopra una linea o un ostacolo basso), poi burpee dall'altro lato.",
+  "img": "",
+  "ref": "https://www.google.com/search?tbm=isch&q=burpee+lateral+jump"
+ },
+ {
+  "id": "ex-sit-up",
+  "name": "Sit-up",
+  "pattern": "core",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "",
+  "reps": "15",
+  "active": true,
+  "desc": "Supino con ginocchia piegate: sali con il busto fino a sedere e torna giù controllato.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Sit-Up/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=sit+up+exercise"
+ },
+ {
+  "id": "ex-jump-rope",
+  "name": "Jump rope",
   "pattern": "cardio",
   "equipment": [
-   "slam_ball"
+   "corda"
   ],
   "places": [
-   "palestra"
+   "palestra",
+   "casa",
+   "outdoor"
   ],
   "notes": "",
+  "reps": "50",
   "active": true,
-  "example": true
+  "desc": "Salto con la corda a piedi uniti o alternati, polsi a guidare la rotazione, atterraggio sulle punte.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Rope_Jumping/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=jump+rope"
  },
  {
-  "id": "ex-box-jump",
-  "name": "Box jump",
-  "pattern": "cardio",
+  "id": "ex-mc-slider",
+  "name": "Mountain climber con slider",
+  "pattern": "core",
   "equipment": [
-   "box"
+   "slider"
   ],
   "places": [
-   "palestra"
+   "palestra",
+   "casa"
   ],
   "notes": "",
+  "reps": "20",
   "active": true,
-  "example": true
+  "desc": "Mountain climber con i piedi sugli slider: le ginocchia scivolano verso il petto alternandosi.",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Mountain_Climbers/0.jpg",
+  "ref": "https://www.google.com/search?tbm=isch&q=slider+mountain+climber"
  },
  {
-  "id": "ex-db-curl",
-  "name": "Curl manubri",
-  "pattern": "arms",
+  "id": "ex-plank-db-lift",
+  "name": "Plank con sollevamento manubrio",
+  "pattern": "core",
   "equipment": [
    "manubri"
   ],
@@ -790,52 +622,116 @@
    "palestra",
    "casa"
   ],
-  "notes": "",
+  "notes": "Plank sulle mani, solleva il manubrio alternando",
+  "reps": "6+6",
   "active": true,
-  "example": true
+  "desc": "Plank sulle mani accanto a un manubrio: sollevalo e riappoggialo alternando le mani senza ruotare il bacino.",
+  "img": "",
+  "ref": "https://www.google.com/search?tbm=isch&q=plank+dumbbell+pull+through"
  },
  {
-  "id": "ex-hammer",
-  "name": "Curl martello",
+  "id": "ex-trx-curl",
+  "name": "TRX curl bicipiti",
   "pattern": "arms",
   "equipment": [
-   "manubri"
+   "trx"
   ],
   "places": [
    "palestra",
-   "casa"
+   "outdoor"
   ],
-  "notes": "",
+  "notes": "Frontale all'ancoraggio",
+  "reps": "10",
   "active": true,
-  "example": true
+  "desc": "Di fronte all'ancoraggio, palmi in su sulle maniglie TRX: piega i gomiti portando le mani alla fronte, gomiti fermi.",
+  "img": "",
+  "ref": "https://www.google.com/search?tbm=isch&q=trx+bicep+curl"
  },
  {
-  "id": "ex-pushdown",
-  "name": "Pushdown ai cavi",
-  "pattern": "arms",
+  "id": "ex-band-walk",
+  "name": "Crab walk laterale con elastico",
+  "pattern": "lunge",
   "equipment": [
-   "cavi"
+   "elastici"
+  ],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "Elastico a ginocchia o caviglie",
+  "reps": "10+10",
+  "active": true,
+  "desc": "Elastico attorno a ginocchia o caviglie, mezzo squat: passi laterali mantenendo tensione sull'elastico.",
+  "img": "",
+  "ref": "https://www.google.com/search?tbm=isch&q=lateral+band+walk"
+ },
+ {
+  "id": "ex-mb-squat-throw",
+  "name": "Squat con lancio palla medica",
+  "pattern": "squat",
+  "equipment": [
+   "palla_medica"
   ],
   "places": [
    "palestra"
   ],
-  "notes": "",
+  "notes": "Squat dinamico con lancio in alto/al muro",
+  "reps": "10",
   "active": true,
-  "example": true
+  "desc": "Palla medica al petto: squat e, risalendo, lancia la palla in alto (o al muro) e riprendila tornando in squat.",
+  "img": "",
+  "ref": "https://www.google.com/search?tbm=isch&q=medicine+ball+squat+throw"
  },
  {
-  "id": "ex-db-french",
-  "name": "French press manubrio",
-  "pattern": "arms",
-  "equipment": [
-   "manubri"
-  ],
+  "id": "ex-wall-sit",
+  "name": "Sedia (wall sit)",
+  "pattern": "squat",
+  "equipment": [],
   "places": [
    "palestra",
-   "casa"
+   "casa",
+   "outdoor"
+  ],
+  "notes": "Isometria schiena al muro",
+  "reps": "30\"",
+  "active": true,
+  "desc": "Schiena al muro, cosce parallele al suolo e ginocchia a 90°: mantieni la posizione.",
+  "img": "",
+  "ref": "https://www.google.com/search?tbm=isch&q=wall+sit+exercise"
+ },
+ {
+  "id": "ex-reverse-lunge",
+  "name": "Affondi indietro",
+  "pattern": "lunge",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
   ],
   "notes": "",
+  "reps": "6+6",
   "active": true,
-  "example": true
+  "desc": "Passo indietro e scendi finché il ginocchio posteriore sfiora terra, poi torna; alterna le gambe.",
+  "img": "",
+  "ref": "https://www.google.com/search?tbm=isch&q=reverse+lunge+bodyweight"
+ },
+ {
+  "id": "ex-bosu-plank",
+  "name": "Plank su bosu con gamba sollevata",
+  "pattern": "core",
+  "equipment": [
+   "bosu"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "Solleva una gamba alla volta",
+  "reps": "6+6",
+  "active": true,
+  "desc": "Plank con avambracci o mani sul bosu: solleva una gamba alla volta mantenendo il bacino fermo.",
+  "img": "",
+  "ref": "https://www.google.com/search?tbm=isch&q=bosu+plank+leg+lift"
  }
 ]

@@ -77,7 +77,7 @@ h2{font-size:13px;text-transform:uppercase;letter-spacing:.09em;color:var(--mute
 /* plan */
 .round{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .round>header{display:flex;justify-content:space-between;padding:12px 16px;background:var(--surface-2);font-weight:700}
-.st{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:10px;align-items:center;padding:11px 16px;border-top:1px solid var(--line)}
+.st{display:grid;grid-template-columns:minmax(28px,auto) minmax(0,1fr) auto;gap:10px;align-items:center;padding:11px 16px;border-top:1px solid var(--line)}
 .st .n{font-family:var(--display);font-size:20px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
 .st .nm{font-weight:600}
 .st .meta{font-size:12px;color:var(--muted)}
@@ -110,6 +110,17 @@ h2{font-size:13px;text-transform:uppercase;letter-spacing:.09em;color:var(--mute
 .ctrl{display:grid;grid-template-columns:1fr 2fr 1fr;gap:8px}
 .hist{display:grid;gap:8px}
 .hist .card .when{font-variant-numeric:tabular-nums}
+.thumb{width:64px;height:64px;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:#fff;flex-shrink:0}
+.st .thumb{width:44px;height:44px}
+.card .body{display:flex;gap:12px;min-width:0}
+.desc{font-size:13px;color:var(--muted);margin:4px 0 0}
+a.ref{font-size:12px;color:var(--muted)}
+.now .media{display:flex;gap:12px;align-items:flex-start;margin-top:8px}
+.now .media img{width:120px;height:120px;object-fit:cover;border-radius:10px;background:#fff}
+.amrapList{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:4px;font-size:17px}
+.amrapList b{font-family:var(--display);font-size:22px;margin-right:6px}
+.laps{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+.laps output{font-family:var(--display);font-size:40px;font-weight:700}
 .empty{border:1px dashed var(--line);border-radius:14px;padding:26px;text-align:center;color:var(--muted)}
 dialog{border:1px solid var(--line);border-radius:16px;background:var(--surface);color:var(--fg);padding:0;width:min(560px,calc(100vw - 32px));max-height:88vh}
 dialog::backdrop{background:rgba(0,0,0,.45)}
@@ -145,6 +156,9 @@ dialog textarea{width:100%;font-family:ui-monospace,monospace;font-size:12px}
       <div><h2>Obiettivo</h2><div class="chips" id="focusOpts"></div></div>
     </div>
     <div class="panel stack">
+      <div><h2>Formato</h2><div class="chips" id="formatOpts"></div><p class="note">AMRAP = più giri possibili nel tempo dato, con ripetizioni fisse per esercizio.</p></div>
+    </div>
+    <div class="panel stack" id="intPanel">
       <div><h2>Lavoro / recupero</h2><div class="chips" id="intOpts"></div></div>
       <div class="row">
         <label class="field">Lavoro (s)<input id="workS" type="number" min="5" max="600" step="5"></label>
@@ -157,6 +171,16 @@ dialog textarea{width:100%;font-family:ui-monospace,monospace;font-size:12px}
         <div class="field">Durata<div class="total" id="totalOut"></div></div>
       </div>
       <label class="toggle"><input type="checkbox" id="varyRounds"> Esercizi diversi a ogni giro</label>
+    </div>
+    <div class="panel stack" id="amrapPanel">
+      <div><h2>AMRAP</h2></div>
+      <div class="row">
+        <div class="field">Minuti per blocco<div class="stepper"><button data-step="amrapMin:-1" aria-label="Meno minuti">−</button><output id="amrapMinOut"></output><button data-step="amrapMin:1" aria-label="Più minuti">+</button></div></div>
+        <div class="field">Esercizi per blocco<div class="stepper"><button data-step="amrapEx:-1" aria-label="Meno esercizi">−</button><output id="amrapExOut"></output><button data-step="amrapEx:1" aria-label="Più esercizi">+</button></div></div>
+        <div class="field">Blocchi<div class="stepper"><button data-step="amrapBlocks:-1" aria-label="Meno blocchi">−</button><output id="amrapBlocksOut"></output><button data-step="amrapBlocks:1" aria-label="Più blocchi">+</button></div></div>
+      </div>
+      <label class="field" id="blockRestWrap">Recupero tra blocchi (s)<input id="blockRestS" type="number" min="0" max="600" step="15"></label>
+      <div class="field">Durata totale<div class="total" id="totalOut2"></div></div>
     </div>
     <button class="btn block" id="genBtn">Genera scheda</button>
     <p class="warning" id="genWarn" hidden></p>
@@ -176,6 +200,7 @@ dialog textarea{width:100%;font-family:ui-monospace,monospace;font-size:12px}
     <div class="row" style="justify-content:space-between"><button class="link" id="quitBtn">✕ Esci</button><span class="note" id="progress"></span></div>
     <div class="timer" id="timerBox"><div class="phase" id="phase">PRONTI</div><div class="clock" id="clock">00:10</div><div class="bar2"><i id="bar"></i></div></div>
     <div class="now"><div class="note" id="nowLbl">Ora</div><div class="big" id="nowName">—</div><div class="note" id="nowNote"></div></div>
+    <div class="laps" id="lapsBox" hidden><div><div class="note">Giri completati</div><output id="lapsOut">0</output></div><div class="row"><button class="btn ghost small" id="lapMinus" aria-label="Togli un giro">−1</button><button class="btn" id="lapPlus">+1 giro</button></div></div>
     <div class="next" id="nextLine"></div>
     <div class="ctrl"><button class="btn ghost" id="prevBtn">⟨ Indietro</button><button class="btn main" id="pauseBtn">Pausa</button><button class="btn ghost" id="skipBtn">Salta ⟩</button></div>
     <div class="confirm" id="quitConfirm" hidden>Uscire? <button class="btn small" id="quitSave">Salva come parziale</button><button class="btn ghost small" id="quitDrop">Esci senza salvare</button><button class="link" id="quitCancel">Annulla</button></div>
@@ -226,7 +251,9 @@ dialog textarea{width:100%;font-family:ui-monospace,monospace;font-size:12px}
   <label class="field">Schema motorio<select id="exPattern"></select></label>
   <div class="field">Attrezzatura richiesta (tutta) <div class="chips" id="exEquip"></div><span class="note">Nessuna selezione = corpo libero.</span></div>
   <div class="field">Dove è fattibile<div class="chips" id="exPlaces"></div></div>
+  <label class="field">Descrizione<textarea id="exDesc" rows="3" maxlength="500"></textarea></label>
   <label class="field">Note tecniche / carichi<textarea id="exNotes" rows="2" maxlength="300"></textarea></label>
+  <div class="row"><label class="field">Ripetizioni (AMRAP)<input id="exReps" maxlength="12" placeholder="es. 10, 6+6, 30&quot;"></label><label class="field" style="flex:2">URL immagine<input id="exImg" type="url" maxlength="400" placeholder="https://…"></label></div>
   <label class="toggle"><input type="checkbox" id="exActive" checked> Attivo (proponibile nelle schede)</label>
   <p class="warning" id="exErr" hidden></p>
   <div class="row" style="justify-content:space-between">
@@ -252,9 +279,14 @@ const EQUIP = [
  ['manubri','Manubri'],['kettlebell','Kettlebell'],['bilanciere','Bilanciere'],['panca','Panca'],['rack','Rack'],
  ['sbarra','Sbarra trazioni'],['cavi','Cavi'],['macchine','Macchine'],['landmine','Landmine'],['trx','TRX'],
  ['elastici','Elastici'],['palla_medica','Palla medica'],['slam_ball','Slam ball'],['sandbag','Sandbag'],['box','Box'],
- ['corda_battente','Battle rope'],['vogatore','Vogatore'],['bike','Bike'],['assault_bike','Assault bike'],['tapis','Tapis roulant'],['skierg','SkiErg']
+ ['corda_battente','Battle rope'],['vogatore','Vogatore'],['bike','Bike'],['assault_bike','Assault bike'],['tapis','Tapis roulant'],['skierg','SkiErg'],
+ ['corda','Corda per saltare'],['slider','Slider'],['bosu','Bosu']
 ];
-const PLACE_EQUIP = { palestra: EQUIP.map(e=>e[0]), casa:['manubri','kettlebell','elastici'], outdoor:['elastici','trx','sbarra'] };
+const PLACE_EQUIP = { palestra: EQUIP.map(e=>e[0]), casa:['manubri','kettlebell','elastici','corda','slider'], outdoor:['elastici','trx','sbarra','corda'] };
+const FORMATS = [['interval','Intervalli'],['amrap','AMRAP'],['mixed','Intervalli + AMRAP']];
+const DEFAULT_REPS = {squat:'10',hinge:'10',lunge:'6+6',push_h:'8',push_v:'8',pull_h:'10',pull_v:'5',core:'10',carry:'20 m',cardio:'10',arms:'10'};
+const repsOf = x => x.reps || DEFAULT_REPS[x.pattern] || '10';
+const safeUrl = u => /^https:\/\/[^\s"'<>]+$/.test(u||'') ? u : '';
 const PATTERNS = [
  ['squat','Squat'],['hinge','Hinge / stacco'],['lunge','Affondi / unilaterale'],['push_h','Spinta orizzontale'],['push_v','Spinta verticale'],
  ['pull_h','Tirata orizzontale'],['pull_v','Tirata verticale'],['core','Core'],['carry','Trasporti'],['cardio','Cardio / metcon'],['arms','Braccia']
@@ -339,7 +371,7 @@ function describeMode(){
 }
 
 // ---------- settings (per viewer) ----------
-const S = Object.assign({ place:'palestra', focus:'total', work:45, rest:15, roundRest:60, stations:6, rounds:3, vary:false, equip:{} }, ls.get('sp.settings',{}));
+const S = Object.assign({ place:'palestra', focus:'total', work:45, rest:15, roundRest:60, stations:6, rounds:3, vary:false, equip:{}, format:'interval', amrapMin:8, amrapEx:4, amrapBlocks:1, blockRest:60 }, ls.get('sp.settings',{}));
 const saveS = () => ls.set('sp.settings',S);
 const equipFor = p => new Set(S.equip[p] || PLACE_EQUIP[p]);
 
@@ -370,19 +402,32 @@ function renderSetup(){
   $('workS').value=S.work; $('restS').value=S.rest; $('roundRestS').value=S.roundRest;
   $('stationsOut').textContent=S.stations; $('roundsOut').textContent=S.rounds; $('varyRounds').checked=S.vary;
   const total = S.rounds*(S.stations*S.work + (S.stations-1)*S.rest) + (S.rounds-1)*S.roundRest;
-  $('totalOut').textContent = dur(total);
+  $('formatOpts').innerHTML = FORMATS.map(([id,n])=>chip(n,S.format===id,`data-format="${id}"`)).join('');
+  const useInt=S.format!=='amrap', useAm=S.format!=='interval';
+  $('intPanel').hidden=!useInt; $('amrapPanel').hidden=!useAm;
+  $('amrapMinOut').textContent=S.amrapMin+"'"; $('amrapExOut').textContent=S.amrapEx; $('amrapBlocksOut').textContent=S.amrapBlocks; $('blockRestS').value=S.blockRest;
+  $('blockRestWrap').hidden = !(S.amrapBlocks>1 || S.format==='mixed');
+  const all = planDuration({rounds:useInt?Array(S.rounds).fill(Array(S.stations)):[], work:S.work, rest:S.rest, roundRest:S.roundRest, blockRest:S.blockRest, amraps:useAm?Array(S.amrapBlocks).fill({min:S.amrapMin}):[]});
+  $('totalOut').textContent = dur(useAm? total : all); $('totalOut2').textContent = dur(all);
+}
+function planDuration(p){
+  const R=p.rounds.length, n=R?p.rounds[0].length:0, A=(p.amraps||[]);
+  const iv = R? R*(n*p.work+(n-1)*p.rest)+(R-1)*p.roundRest : 0;
+  const am = A.reduce((a,b)=>a+b.min*60,0) + Math.max(0, A.length-(R?0:1))*(p.blockRest??60);
+  return iv+am;
 }
 $('v-train').addEventListener('click',e=>{
   const b=e.target.closest('button'); if(!b) return;
   if(b.dataset.place){ S.place=b.dataset.place; }
   else if(b.dataset.eq){ const eq=equipFor(S.place); eq.has(b.dataset.eq)?eq.delete(b.dataset.eq):eq.add(b.dataset.eq); S.equip[S.place]=[...eq]; }
   else if(b.dataset.focus){ S.focus=b.dataset.focus; }
+  else if(b.dataset.format){ S.format=b.dataset.format; }
   else if(b.dataset.int){ if(b.dataset.int==='custom'){ $('workS').focus(); return; } const [w,r]=b.dataset.int.split('/').map(Number); S.work=w; S.rest=r; }
-  else if(b.dataset.step){ const [k,d]=b.dataset.step.split(':'); const lim={stations:[3,12],rounds:[1,8]}[k]; S[k]=Math.min(lim[1],Math.max(lim[0],S[k]+Number(d))); }
+  else if(b.dataset.step){ const [k,d]=b.dataset.step.split(':'); const lim={stations:[3,12],rounds:[1,8],amrapMin:[3,30],amrapEx:[2,6],amrapBlocks:[1,4]}[k]; S[k]=Math.min(lim[1],Math.max(lim[0],S[k]+Number(d))); }
   else return;
   saveS(); renderSetup();
 });
-[['workS','work',5,600],['restS','rest',0,300],['roundRestS','roundRest',0,600]].forEach(([id,k,mn,mx])=>$(id).addEventListener('change',()=>{ const v=Math.round(Number($(id).value)); S[k]=isFinite(v)?Math.min(mx,Math.max(mn,v)):S[k]; saveS(); renderSetup(); }));
+[['workS','work',5,600],['restS','rest',0,300],['roundRestS','roundRest',0,600],['blockRestS','blockRest',0,600]].forEach(([id,k,mn,mx])=>$(id).addEventListener('change',()=>{ const v=Math.round(Number($(id).value)); S[k]=isFinite(v)?Math.min(mx,Math.max(mn,v)):S[k]; saveS(); renderSetup(); }));
 $('varyRounds').onchange=()=>{ S.vary=$('varyRounds').checked; saveS(); renderSetup(); };
 
 // ---------- generator ----------
@@ -397,7 +442,7 @@ function weightedPick(cands,weight){
   const ws=cands.map(weight), tot=ws.reduce((a,b)=>a+b,0); let r=Math.random()*tot;
   for(let i=0;i<cands.length;i++){ r-=ws[i]; if(r<=0) return cands[i]; } return cands[cands.length-1];
 }
-function snap(ex,fallback){ return {id:ex.id,name:ex.name,pattern:ex.pattern,equipment:ex.equipment||[],notes:ex.notes||'',fallback:!!fallback}; }
+function snap(ex,fallback){ return {id:ex.id,name:ex.name,pattern:ex.pattern,equipment:ex.equipment||[],notes:ex.notes||'',desc:ex.desc||'',img:ex.img||'',ref:ex.ref||'',reps:repsOf(ex),fallback:!!fallback}; }
 function buildRound(pool,slots,usedGlobal,rec){
   const used=new Set(), out=[];
   slots.forEach(pat=>{
@@ -414,16 +459,23 @@ let plan=null;
 function generate(){
   const eq=equipFor(S.place), pool=data.exercises.filter(x=>compatible(x,S.place,eq)).map(x=>({...x,equipment:x.equipment||[]}));
   const warn=$('genWarn'); warn.hidden=true;
-  if(pool.length<S.stations){ warn.textContent=`Per ${lbl(PLACES,S.place)} con questa attrezzatura ci sono ${pool.length} esercizi compatibili: ne servono almeno ${S.stations}. Aggiungine in "Esercizi" o riduci le stazioni.`; warn.hidden=false; return; }
+  const useInt=S.format!=='amrap', useAm=S.format!=='interval';
+  const need=Math.max(useInt?S.stations:0, useAm?S.amrapEx:0);
+  if(pool.length<need){ warn.textContent=`Per ${lbl(PLACES,S.place)} con questa attrezzatura ci sono ${pool.length} esercizi compatibili: ne servono almeno ${need}. Aggiungine in "Esercizi" o riduci stazioni/esercizi.`; warn.hidden=false; return; }
   const tpl=FOCUS[S.focus][1], slots=Array.from({length:S.stations},(_,i)=>tpl[i%tpl.length]);
   const rec=recency(), usedGlobal=new Set(), rounds=[];
-  const first=buildRound(pool,slots,usedGlobal,rec);
-  for(let r=0;r<S.rounds;r++) rounds.push(r===0||!S.vary? first : buildRound(pool,slots,usedGlobal,rec));
-  plan={ id:'p_'+uidGen(), createdAt:new Date().toISOString(), createdBy:store.uid||null, place:S.place, focus:S.focus, work:S.work, rest:S.rest, roundRest:S.roundRest, vary:S.vary, slots, rounds:rounds.map(r=>r.map(x=>({...x}))) };
+  if(useInt){ const first=buildRound(pool,slots,usedGlobal,rec);
+    for(let r=0;r<S.rounds;r++) rounds.push(r===0||!S.vary? first : buildRound(pool,slots,usedGlobal,rec)); }
+  const amraps=[];
+  if(useAm) for(let a=0;a<S.amrapBlocks;a++){ const off=(a*S.amrapEx+(useInt?S.stations:0)); const sl=Array.from({length:S.amrapEx},(_,i)=>tpl[(off+i)%tpl.length]); amraps.push({min:S.amrapMin, slots:sl, ex:buildRound(pool,sl,usedGlobal,rec)}); }
+  plan={ id:'p_'+uidGen(), createdAt:new Date().toISOString(), createdBy:store.uid||null, place:S.place, focus:S.focus, format:S.format, work:S.work, rest:S.rest, roundRest:S.roundRest, blockRest:S.blockRest, vary:S.vary, slots, rounds:rounds.map(r=>r.map(x=>({...x}))), amraps };
   renderPlan(); go('plan');
 }
 function swap(r,i){
   const eq=equipFor(plan.place), pool=data.exercises.filter(x=>compatible(x,plan.place,eq)).map(x=>({...x,equipment:x.equipment||[]}));
+  if(typeof r==='string'){ const A=plan.amraps[Number(r.slice(1))], cur=A.ex[i], inB=new Set(A.ex.map(x=>x.id)), rec=recency();
+    let c=pool.filter(x=>x.pattern===cur.pattern && !inB.has(x.id)), fb=false; if(!c.length){ c=pool.filter(x=>!inB.has(x.id)); fb=true; } if(!c.length) return;
+    const ex=weightedPick(c,x=>Math.max(.05,1/(1+1.2*(rec[x.id]||0)))); A.ex[i]=snap(ex,fb && ex.pattern!==A.slots[i]); renderPlan(); return; }
   const inRound=new Set(plan.rounds[r].map(x=>x.id)), cur=plan.rounds[r][i], rec=recency();
   let c=pool.filter(x=>x.pattern===cur.pattern && !inRound.has(x.id)), fb=false;
   if(!c.length){ c=pool.filter(x=>!inRound.has(x.id)); fb=true; }
@@ -436,40 +488,47 @@ function swap(r,i){
 function renderPlan(){
   const ld=lastDone(), now=Date.now();
   $('planTitle').textContent = FOCUS[plan.focus][0]+' · '+lbl(PLACES,plan.place);
-  const n=plan.rounds[0].length, R=plan.rounds.length;
-  const total=R*(n*plan.work+(n-1)*plan.rest)+(R-1)*plan.roundRest;
-  $('planMeta').textContent = `${R} giri × ${n} stazioni · ${plan.work}s lavoro / ${plan.rest}s recupero · ${plan.roundRest}s tra i giri · ${dur(total)}`;
-  const show = plan.vary ? plan.rounds : [plan.rounds[0]];
-  $('planList').innerHTML = show.map((round,r)=>`<article class="round"><header><span>${plan.vary?'Giro '+(r+1):'Circuito · ripeti '+R+'×'}</span><span class="note">${round.length} stazioni</span></header>${
-    round.map((x,i)=>{ const days = ld[x.id]? Math.floor((now-ld[x.id])/864e5) : null;
-      return `<div class="st"><span class="n">${i+1}</span><div><div class="nm">${esc(x.name)}</div><div class="meta"><span class="tag">${esc(lbl(PATTERNS,x.pattern))}</span>${x.equipment.length?x.equipment.map(e=>`<span class="tag">${esc(lbl(EQUIP,e))}</span>`).join(''):'<span class="tag">Corpo libero</span>'}${x.fallback?`<span class="tag fb" title="Nessun esercizio per lo schema ${esc(lbl(PATTERNS,plan.slots[i]))}">sostituto</span>`:''}${days!==null?`<span class="tag">fatto ${days===0?'oggi':days+' gg fa'}</span>`:''}</div></div><button class="btn ghost small" data-swap="${r}:${i}" aria-label="Cambia ${esc(x.name)}">↻</button></div>`; }).join('')
-  }</article>`).join('');
+  plan.amraps=plan.amraps||[];
+  const R=plan.rounds.length, n=R?plan.rounds[0].length:0, A=plan.amraps;
+  const parts=[];
+  if(R) parts.push(`${R} giri × ${n} stazioni · ${plan.work}s/${plan.rest}s · ${plan.roundRest}s tra i giri`);
+  if(A.length) parts.push(`${A.length>1?A.length+' blocchi ':''}AMRAP ${A[0].min}'`);
+  $('planMeta').textContent = parts.join(' + ')+' · '+dur(planDuration(plan));
+  const row=(x,i,key,slot,withReps)=>{ const days = ld[x.id]? Math.floor((now-ld[x.id])/864e5) : null; const img=safeUrl(x.img);
+    return `<div class="st"><span class="n">${withReps?esc(x.reps||repsOf(x)):i+1}</span><div class="body" style="display:flex;gap:10px;min-width:0">${img?`<img class="thumb" src="${esc(img)}" alt="" loading="lazy">`:''}<div style="min-width:0"><div class="nm">${esc(x.name)}</div><div class="meta"><span class="tag">${esc(lbl(PATTERNS,x.pattern))}</span>${x.equipment.length?x.equipment.map(e=>`<span class="tag">${esc(lbl(EQUIP,e))}</span>`).join(''):'<span class="tag">Corpo libero</span>'}${x.fallback?`<span class="tag fb" title="Nessun esercizio per lo schema ${esc(lbl(PATTERNS,slot))}">sostituto</span>`:''}${days!==null?`<span class="tag">fatto ${days===0?'oggi':days+' gg fa'}</span>`:''}</div></div></div><button class="btn ghost small" data-swap="${key}:${i}" aria-label="Cambia ${esc(x.name)}">↻</button></div>`; };
+  const show = plan.vary ? plan.rounds : plan.rounds.slice(0,1);
+  $('planList').innerHTML = show.map((round,r)=>`<article class="round"><header><span>${plan.vary?'Giro '+(r+1):'Circuito · ripeti '+R+'×'}</span><span class="note">${round.length} stazioni · ${plan.work}/${plan.rest}s</span></header>${
+    round.map((x,i)=>row(x,i,r,plan.slots[i],false)).join('') }</article>`).join('')
+  + A.map((b,a)=>`<article class="round"><header><span>${A.length>1?'Blocco '+(a+1)+' · ':''}AMRAP ${b.min}'</span><span class="note">più giri possibili</span></header>${
+    b.ex.map((x,i)=>row(x,i,'a'+a,b.slots[i],true)).join('') }</article>`).join('');
 }
-$('planList').addEventListener('click',e=>{ const b=e.target.closest('[data-swap]'); if(!b) return; const [r,i]=b.dataset.swap.split(':').map(Number); swap(r,i); });
+$('planList').addEventListener('click',e=>{ const b=e.target.closest('[data-swap]'); if(!b) return; const [r,i]=b.dataset.swap.split(':'); swap(r[0]==='a'?r:Number(r),Number(i)); });
 $('genBtn').onclick=generate; $('regenBtn').onclick=generate; $('startBtn').onclick=start;
 function renderRecent(){
   const list=data.plans.slice(0,6);
   $('recentWrap').hidden=!list.length;
-  $('recentList').innerHTML=list.map(p=>`<div class="card"><div><strong>${esc((FOCUS[p.focus]||['Scheda'])[0])} · ${esc(lbl(PLACES,p.place))}</strong><p>${new Date(p.createdAt).toLocaleString('it-IT',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})} · ${p.rounds.length} giri × ${p.rounds[0].length} · ${p.work}/${p.rest}s · ${esc(p.rounds[0].map(x=>x.name).join(', '))}</p></div><div class="acts"><button class="btn ghost small" data-load="${esc(p.id)}">Apri</button></div></div>`).join('');
+  $('recentList').innerHTML=list.map(p=>`<div class="card"><div><strong>${esc((FOCUS[p.focus]||['Scheda'])[0])} · ${esc(lbl(PLACES,p.place))}</strong><p>${new Date(p.createdAt).toLocaleString('it-IT',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})} · ${esc(planSummary(p))} · ${esc([...(p.rounds[0]||[]),...(p.amraps||[]).flatMap(b=>b.ex)].map(x=>x.name).join(', '))}</p></div><div class="acts"><button class="btn ghost small" data-load="${esc(p.id)}">Apri</button></div></div>`).join('');
 }
 $('recentList').addEventListener('click',e=>{ const b=e.target.closest('[data-load]'); if(!b) return; const p=data.plans.find(x=>x.id===b.dataset.load); if(!p) return; plan=JSON.parse(JSON.stringify(p)); plan.id='p_'+uidGen(); plan.createdAt=new Date().toISOString(); plan.createdBy=store.uid||null; renderPlan(); go('plan'); });
 
+function planSummary(p){ const a=[]; if(p.rounds&&p.rounds.length) a.push(`${p.rounds.length} giri × ${p.rounds[0].length} · ${p.work}/${p.rest}s`); (p.amraps||[]).forEach(b=>a.push(`AMRAP ${b.min}'`)); return a.join(' + '); }
 // ---------- timer (timestamp based, no drift) ----------
-const T={ phases:[], i:0, endAt:0, left:0, paused:false, running:false, iv:null, startedAt:0, wake:null, ac:null, lastBeep:-1 };
+const T={ phases:[], i:0, endAt:0, left:0, paused:false, running:false, iv:null, startedAt:0, wake:null, ac:null, lastBeep:-1, laps:[] };
 function timeline(p){
-  const ph=[{t:'prep',d:10,r:0,s:0}];
+  const ph=[p.rounds.length?{t:'prep',d:10,r:0,s:0}:{t:'prep',d:10,a:0}];
   p.rounds.forEach((round,r)=>{ round.forEach((x,s)=>{ ph.push({t:'work',d:p.work,r,s}); if(s<round.length-1 && p.rest>0) ph.push({t:'rest',d:p.rest,r,s:s+1}); }); if(r<p.rounds.length-1 && p.roundRest>0) ph.push({t:'roundRest',d:p.roundRest,r:r+1,s:0}); });
+  (p.amraps||[]).forEach((b,a)=>{ const br=p.blockRest??60; if((a>0||p.rounds.length) && br>0) ph.push({t:'roundRest',d:br,a}); ph.push({t:'amrap',d:b.min*60,a}); });
   return ph;
 }
 function beep(freq,len){ try{ T.ac=T.ac||new (window.AudioContext||window.webkitAudioContext)(); const o=T.ac.createOscillator(), g=T.ac.createGain(); o.frequency.value=freq; g.gain.value=.15; o.connect(g); g.connect(T.ac.destination); o.start(); o.stop(T.ac.currentTime+len); }catch(e){} }
 async function wakeLock(on){ try{ if(on && navigator.wakeLock) T.wake=await navigator.wakeLock.request('screen'); else if(!on && T.wake){ await T.wake.release(); T.wake=null; } }catch(e){} }
 function start(){
   store.savePlan(plan);
-  T.phases=timeline(plan); T.i=0; T.paused=false; T.running=true; T.startedAt=Date.now(); T.endAt=Date.now()+T.phases[0].d*1000; T.lastBeep=-1;
+  T.phases=timeline(plan); T.i=0; T.paused=false; T.running=true; T.startedAt=Date.now(); T.endAt=Date.now()+T.phases[0].d*1000; T.lastBeep=-1; T.laps=(plan.amraps||[]).map(()=>0);
   beep(660,.05); wakeLock(true);
   $('quitConfirm').hidden=true; go('player'); clearInterval(T.iv); T.iv=setInterval(tick,200); paint();
 }
-function enter(i,at){ if(i>=T.phases.length) return finish(true); T.i=i; T.endAt=at+T.phases[i].d*1000; T.lastBeep=-1; beep(T.phases[i].t==='work'?880:520,.18); }
+function enter(i,at){ if(i>=T.phases.length) return finish(true); T.i=i; T.endAt=at+T.phases[i].d*1000; T.lastBeep=-1; beep(T.phases[i].t==='work'||T.phases[i].t==='amrap'?880:520,.18); }
 function tick(){
   if(!T.running||T.paused) return;
   let now=Date.now();
@@ -482,22 +541,37 @@ function tick(){
 function paint(){
   const ph=T.phases[T.i]; if(!ph) return;
   const left = T.paused? T.left : Math.max(0,(T.endAt-Date.now())/1000);
-  const names={prep:'PRONTI',work:'LAVORO',rest:'RECUPERO',roundRest:'RECUPERO GIRO'};
+  const names={prep:'PRONTI',work:'LAVORO',rest:'RECUPERO',roundRest:ph.a!=null?'RECUPERO BLOCCO':'RECUPERO GIRO',amrap:'AMRAP'};
   $('phase').textContent=names[ph.t]; $('clock').textContent=fmt(left);
   $('bar').style.transform=`scaleX(${ph.d? left/ph.d : 0})`;
-  $('timerBox').className='timer'+(ph.t==='work'?'':ph.t==='prep'?' prep':' rest');
+  $('timerBox').className='timer'+(ph.t==='work'||ph.t==='amrap'?'':ph.t==='prep'?' prep':' rest');
+  $('pauseBtn').textContent = T.paused?'Riprendi':'Pausa';
+  $('prevBtn').disabled = T.i===0;
+  $('lapsBox').hidden = ph.t!=='amrap';
+  if(ph.a!=null){
+    const b=plan.amraps[ph.a];
+    $('progress').textContent=`${plan.amraps.length>1?'Blocco '+(ph.a+1)+'/'+plan.amraps.length+' · ':''}AMRAP ${b.min}'`;
+    $('nowLbl').textContent = ph.t==='amrap'?'Più giri possibili':'Prossimo: AMRAP '+b.min+"'";
+    $('nowName').innerHTML = `<ul class="amrapList">${b.ex.map(x=>`<li><b>${esc(x.reps||repsOf(x))}</b>${esc(x.name)}</li>`).join('')}</ul>`;
+    $('nowNote').textContent=''; $('lapsOut').textContent=T.laps[ph.a]||0;
+    $('nextLine').innerHTML = ph.t==='amrap' ? (ph.a<plan.amraps.length-1?'Dopo: blocco '+(ph.a+2):'Ultimo blocco') : '';
+    return;
+  }
   const round=plan.rounds[ph.r], ex=round[ph.s];
   const n=round.length;
   $('progress').textContent=`Giro ${ph.r+1}/${plan.rounds.length} · Stazione ${ph.s+1}/${n}`;
   $('nowLbl').textContent = ph.t==='work'?'Ora':'Prossimo';
   $('nowName').textContent = ex.name;
-  $('nowNote').textContent = [ex.equipment.map(e=>lbl(EQUIP,e)).join(' · ')||'Corpo libero', ex.notes].filter(Boolean).join(' — ');
-  let nx=null; for(let k=T.i+1;k<T.phases.length;k++){ if(T.phases[k].t==='work'){ nx=T.phases[k]; break; } }
-  const nxEx = nx && (ph.t==='work' ? plan.rounds[nx.r][nx.s] : (()=>{ for(let k=T.phases.indexOf(nx)+1;k<T.phases.length;k++) if(T.phases[k].t==='work') return plan.rounds[T.phases[k].r][T.phases[k].s]; return null; })());
-  $('nextLine').innerHTML = nxEx? 'Dopo: <b>'+esc(nxEx.name)+'</b>' : (ph.t==='work'?'Ultima stazione':'');
-  $('pauseBtn').textContent = T.paused?'Riprendi':'Pausa';
-  $('prevBtn').disabled = T.i===0;
+  const img=safeUrl(ex.img), ref=safeUrl(ex.ref);
+  $('nowNote').innerHTML = esc([ex.equipment.map(e=>lbl(EQUIP,e)).join(' · ')||'Corpo libero', ex.notes].filter(Boolean).join(' — '))
+    + ((img||ex.desc)?`<div class="media">${img?`<img src="${esc(img)}" alt="${esc(ex.name)}">`:''}<div>${ex.desc?`<p class="desc">${esc(ex.desc)}</p>`:''}${ref?`<a class="ref" href="${esc(ref)}" target="_blank" rel="noopener">Altre immagini ↗</a>`:''}</div></div>`:'');
+  let nx=null; for(let k=T.i+1;k<T.phases.length;k++){ if(T.phases[k].a!=null) break; if(T.phases[k].t==='work'){ nx=T.phases[k]; break; } }
+  const nxEx = nx && (ph.t==='work' ? plan.rounds[nx.r][nx.s] : (()=>{ for(let k=T.phases.indexOf(nx)+1;k<T.phases.length;k++) if(T.phases[k].t==='work'&&T.phases[k].a==null) return plan.rounds[T.phases[k].r][T.phases[k].s]; return null; })());
+  const nxA = !nxEx && T.phases.slice(T.i+1).some(p=>p.a!=null);
+  $('nextLine').innerHTML = nxEx? 'Dopo: <b>'+esc(nxEx.name)+'</b>' : nxA ? 'Dopo: <b>AMRAP</b>' : (ph.t==='work'?'Ultima stazione':'');
 }
+$('lapPlus').onclick=()=>{ const ph=T.phases[T.i]; if(!T.running||!ph||ph.a==null) return; T.laps[ph.a]=(T.laps[ph.a]||0)+1; beep(700,.06); paint(); };
+$('lapMinus').onclick=()=>{ const ph=T.phases[T.i]; if(!T.running||!ph||ph.a==null) return; T.laps[ph.a]=Math.max(0,(T.laps[ph.a]||0)-1); paint(); };
 $('pauseBtn').onclick=()=>{ if(!T.running) return; if(T.paused){ T.paused=false; T.endAt=Date.now()+T.left*1000; } else { T.paused=true; T.left=Math.max(0,(T.endAt-Date.now())/1000); } paint(); };
 $('skipBtn').onclick=()=>{ if(!T.running) return; const i=T.i+1; if(i>=T.phases.length) return finish(true); T.i=i; T.lastBeep=-1; if(T.paused) T.left=T.phases[i].d; else T.endAt=Date.now()+T.phases[i].d*1000; paint(); };
 $('prevBtn').onclick=()=>{ if(!T.running||T.i===0) return; T.i--; T.lastBeep=-1; if(T.paused) T.left=T.phases[T.i].d; else T.endAt=Date.now()+T.phases[T.i].d*1000; paint(); };
@@ -509,12 +583,15 @@ document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==
 function stopTimer(){ clearInterval(T.iv); T.running=false; wakeLock(false); }
 let pending=null;
 function finish(complete){
+  const upto = complete? T.phases.length : T.i+1;
   const doneWork = T.phases.slice(0, complete? T.phases.length : T.i).filter(p=>p.t==='work');
+  const doneAm = [...new Set(T.phases.slice(0,upto).filter(p=>p.t==='amrap').map(p=>p.a))];
   stopTimer(); beep(990,.4);
-  const ids=[...new Set((complete? plan.rounds.flat() : doneWork.map(p=>plan.rounds[p.r][p.s])).map(x=>x.id))];
-  const names=[...new Set(plan.rounds.flat().filter(x=>ids.includes(x.id)).map(x=>x.name))];
-  pending={ id:'s_'+uidGen(), kind:'session', date:new Date().toISOString(), place:plan.place, focus:plan.focus, work:plan.work, rest:plan.rest, rounds:plan.rounds.length, stations:plan.rounds[0].length, complete, durationSec:Math.round((Date.now()-T.startedAt)/1000), exIds:ids, exNames:names, rpe:null, note:'' };
-  $('doneMeta').textContent = (complete?'Completato':'Interrotto')+` · ${dur(pending.durationSec)} · ${names.length} esercizi`;
+  const allEx=[...plan.rounds.flat(), ...(plan.amraps||[]).flatMap(b=>b.ex)];
+  const ids=[...new Set([...(complete? plan.rounds.flat() : doneWork.map(p=>plan.rounds[p.r][p.s])), ...doneAm.flatMap(a=>plan.amraps[a].ex)].map(x=>x.id))];
+  const names=[...new Set(allEx.filter(x=>ids.includes(x.id)).map(x=>x.name))];
+  pending={ id:'s_'+uidGen(), kind:'session', date:new Date().toISOString(), place:plan.place, focus:plan.focus, format:plan.format||'interval', work:plan.work, rest:plan.rest, rounds:plan.rounds.length, stations:plan.rounds.length?plan.rounds[0].length:0, amraps:(plan.amraps||[]).map((b,a)=>({min:b.min,laps:T.laps[a]||0})), complete, durationSec:Math.round((Date.now()-T.startedAt)/1000), exIds:ids, exNames:names, rpe:null, note:'' };
+  $('doneMeta').textContent = (complete?'Completato':'Interrotto')+` · ${dur(pending.durationSec)} · ${names.length} esercizi`+pending.amraps.map(b=>` · AMRAP ${b.min}': ${b.laps} giri`).join('');
   $('rpe').value=''; $('doneNote').value=''; $('saveMsg').textContent=''; $('saveSession').disabled=false;
   go('done');
 }
@@ -532,13 +609,13 @@ $('fPlace').innerHTML='<option value="">Tutti i luoghi</option>'+PLACES.map(([v,
 ['q','fPattern','fPlace'].forEach(id=>$(id).addEventListener('input',renderLibrary));
 function renderLibrary(){
   const q=$('q').value.trim().toLowerCase(), fp=$('fPattern').value, fl=$('fPlace').value;
-  const list=data.exercises.filter(x=>(!q||(x.name+' '+(x.notes||'')).toLowerCase().includes(q))&&(!fp||x.pattern===fp)&&(!fl||(x.places||[]).includes(fl)));
+  const list=data.exercises.filter(x=>(!q||(x.name+' '+(x.notes||'')+' '+(x.desc||'')).toLowerCase().includes(q))&&(!fp||x.pattern===fp)&&(!fl||(x.places||[]).includes(fl)));
   $('libStats').textContent=`${list.length} di ${data.exercises.length} esercizi`+(store.canWriteShared?'':' · sola lettura');
   $('addEx').disabled=$('importBtn').disabled=!store.canWriteShared;
   $('dropExamples').hidden=!store.canWriteShared || !data.exercises.some(x=>x.example);
   if(!data.exercises.length){ $('libList').innerHTML='<div class="empty">Archivio vuoto. Aggiungi il primo esercizio con "+ Aggiungi esercizio" o incolla una lista con "Importa JSON".</div>'; return; }
   $('libList').innerHTML = PATTERNS.map(([pid,pl])=>{ const g=list.filter(x=>x.pattern===pid).sort((a,b)=>a.name.localeCompare(b.name,'it')); if(!g.length) return '';
-    return `<div class="group"><h3>${pl} <span class="note">${g.length}</span></h3><div class="lib">${g.map(x=>`<div class="card${x.active===false?' off':''}"><div><strong>${esc(x.name)}</strong><div class="meta" style="margin-top:4px">${(x.equipment||[]).length?(x.equipment).map(e=>`<span class="tag">${esc(lbl(EQUIP,e))}</span>`).join(''):'<span class="tag">Corpo libero</span>'}${(x.places||[]).map(p=>`<span class="tag">${esc(lbl(PLACES,p))}</span>`).join('')}${x.example?'<span class="tag ex">esempio</span>':''}${x.active===false?'<span class="tag">disattivo</span>':''}</div>${x.notes?`<p>${esc(x.notes)}</p>`:''}</div><div class="acts">${store.canWriteShared?`<button class="btn ghost small" data-edit="${esc(x.id)}">Modifica</button>`:''}</div></div>`).join('')}</div></div>`; }).join('') || '<div class="empty">Nessun esercizio corrisponde ai filtri.</div>';
+    return `<div class="group"><h3>${pl} <span class="note">${g.length}</span></h3><div class="lib">${g.map(x=>`<div class="card${x.active===false?' off':''}"><div class="body">${safeUrl(x.img)?`<img class="thumb" src="${esc(x.img)}" alt="" loading="lazy">`:''}<div style="min-width:0"><strong>${esc(x.name)}</strong> <span class="note">· ${esc(repsOf(x))}</span><div class="meta" style="margin-top:4px">${(x.equipment||[]).length?(x.equipment).map(e=>`<span class="tag">${esc(lbl(EQUIP,e))}</span>`).join(''):'<span class="tag">Corpo libero</span>'}${(x.places||[]).map(p=>`<span class="tag">${esc(lbl(PLACES,p))}</span>`).join('')}${x.example?'<span class="tag ex">esempio</span>':''}${x.active===false?'<span class="tag">disattivo</span>':''}</div>${x.desc?`<p class="desc">${esc(x.desc)}</p>`:''}${x.notes?`<p>${esc(x.notes)}</p>`:''}${safeUrl(x.ref)?`<a class="ref" href="${esc(x.ref)}" target="_blank" rel="noopener">${safeUrl(x.img)?'Altre immagini':'Vedi immagini'} ↗</a>`:''}</div></div><div class="acts">${store.canWriteShared?`<button class="btn ghost small" data-edit="${esc(x.id)}">Modifica</button>`:''}</div></div>`).join('')}</div></div>`; }).join('') || '<div class="empty">Nessun esercizio corrisponde ai filtri.</div>';
 }
 $('libList').addEventListener('click',e=>{ const b=e.target.closest('[data-edit]'); if(b) openEx(b.dataset.edit); });
 let editing=null, exDraft=null;
@@ -551,7 +628,7 @@ function openEx(id){
   const x=id?data.exercises.find(e=>e.id===id):null; editing=x?x.id:null;
   exDraft={ equipment:[...(x?.equipment||[])], places:[...(x?.places||['palestra'])] };
   $('exDlgTitle').textContent=x?'Modifica esercizio':'Nuovo esercizio';
-  $('exName').value=x?.name||''; $('exPattern').value=x?.pattern||'squat'; $('exNotes').value=x?.notes||''; $('exActive').checked=x?x.active!==false:true;
+  $('exName').value=x?.name||''; $('exPattern').value=x?.pattern||'squat'; $('exNotes').value=x?.notes||''; $('exDesc').value=x?.desc||''; $('exReps').value=x?.reps||''; $('exImg').value=x?.img||''; $('exActive').checked=x?x.active!==false:true;
   $('exDelete').hidden=!x; $('exDelete').textContent='Elimina'; $('exDelete').dataset.armed=''; $('exErr').hidden=true;
   renderExChips(); $('exDlg').showModal();
 }
@@ -568,7 +645,7 @@ $('exForm').addEventListener('submit',async e=>{
   if(!name){ $('exErr').textContent='Inserisci un nome.'; $('exErr').hidden=false; return; }
   if(!exDraft.places.length){ $('exErr').textContent='Scegli almeno un luogo.'; $('exErr').hidden=false; return; }
   const old=editing?data.exercises.find(x=>x.id===editing):null;
-  const ex={ id:editing||('x_'+uidGen()), name, pattern:$('exPattern').value, equipment:exDraft.equipment, places:exDraft.places, notes:$('exNotes').value.trim(), active:$('exActive').checked, example:old?!!old.example&&old.name===name:false, updatedAt:new Date().toISOString() };
+  const ex={ id:editing||('x_'+uidGen()), name, pattern:$('exPattern').value, equipment:exDraft.equipment, places:exDraft.places, notes:$('exNotes').value.trim(), desc:$('exDesc').value.trim(), reps:$('exReps').value.trim(), img:safeUrl($('exImg').value.trim()), ref:old?.ref||'', active:$('exActive').checked, example:old?!!old.example&&old.name===name:false, updatedAt:new Date().toISOString() };
   try{ await store.saveExercise(ex); $('exDlg').close(); }catch(err){ $('exErr').textContent='Salvataggio non riuscito ('+(err&&err.code||'errore')+').'; $('exErr').hidden=false; }
 });
 $('dropExamples').onclick=()=>{ $('dropConfirm').hidden=false; };
@@ -577,7 +654,7 @@ $('dropYes').onclick=async()=>{ $('dropConfirm').hidden=true; for(const x of dat
 // import / export
 let ioMode='export';
 $('exportBtn').onclick=()=>{ ioMode='export'; $('ioTitle').textContent='Esporta esercizi'; $('ioHelp').textContent='Copia il testo per tenerne una copia o modificarlo e reimportarlo.'; $('ioText').value=JSON.stringify(data.exercises.map(({updatedAt,...x})=>x),null,1); $('ioAct').textContent='Copia'; $('ioErr').hidden=true; $('ioDlg').showModal(); };
-$('importBtn').onclick=()=>{ ioMode='import'; $('ioTitle').textContent='Importa esercizi'; $('ioHelp').innerHTML='Incolla una lista JSON. Campi: <code>name</code>, <code>pattern</code> ('+PATTERNS.map(p=>p[0]).join(', ')+'), <code>equipment</code> (lista), <code>places</code> (palestra, casa, outdoor), <code>notes</code>. Con lo stesso <code>id</code> l\'esercizio viene aggiornato.'; $('ioText').value=''; $('ioAct').textContent='Importa'; $('ioErr').hidden=true; $('ioDlg').showModal(); };
+$('importBtn').onclick=()=>{ ioMode='import'; $('ioTitle').textContent='Importa esercizi'; $('ioHelp').innerHTML='Incolla una lista JSON. Campi: <code>name</code>, <code>pattern</code> ('+PATTERNS.map(p=>p[0]).join(', ')+'), <code>equipment</code> (lista), <code>places</code> (palestra, casa, outdoor), <code>notes</code>, <code>desc</code>, <code>reps</code>, <code>img</code> (URL https). Con lo stesso <code>id</code> l\'esercizio viene aggiornato.'; $('ioText').value=''; $('ioAct').textContent='Importa'; $('ioErr').hidden=true; $('ioDlg').showModal(); };
 $('ioClose').onclick=()=>$('ioDlg').close();
 $('ioAct').onclick=async()=>{
   if(ioMode==='export'){ try{ await navigator.clipboard.writeText($('ioText').value); $('ioAct').textContent='Copiato'; }catch(e){ $('ioText').select(); $('ioAct').textContent='Seleziona e copia'; } return; }
@@ -586,7 +663,7 @@ $('ioAct').onclick=async()=>{
   for(const r of arr){
     if(!r||typeof r.name!=='string'||!pids.includes(r.pattern)){ bad++; continue; }
     const id = typeof r.id==='string' && /^[A-Za-z0-9_.~:@+-]{1,80}$/.test(r.id) ? r.id : 'x_'+uidGen();
-    const ex={ id, name:r.name.slice(0,80), pattern:r.pattern, equipment:(r.equipment||[]).filter(e=>eids.includes(e)), places:((r.places||['palestra']).filter(p=>plids.includes(p))), notes:String(r.notes||'').slice(0,300), active:r.active!==false, example:!!r.example, updatedAt:new Date().toISOString() };
+    const ex={ id, name:r.name.slice(0,80), pattern:r.pattern, equipment:(r.equipment||[]).filter(e=>eids.includes(e)), places:((r.places||['palestra']).filter(p=>plids.includes(p))), notes:String(r.notes||'').slice(0,300), desc:String(r.desc||'').slice(0,500), reps:String(r.reps||'').slice(0,12), img:safeUrl(r.img), ref:safeUrl(r.ref), active:r.active!==false, example:!!r.example, updatedAt:new Date().toISOString() };
     if(!ex.places.length) ex.places=['palestra'];
     try{ await store.saveExercise(ex); ok++; }catch(e){ bad++; }
   }
@@ -598,7 +675,7 @@ function renderHistory(){
   const h=[...data.history].sort((a,b)=>b.date.localeCompare(a.date));
   const month=h.filter(x=>Date.now()-new Date(x.date).getTime()<30*864e5);
   $('histStats').textContent = h.length? `${h.length} allenamenti · ${month.length} negli ultimi 30 giorni · ${dur(month.reduce((a,x)=>a+(x.durationSec||0),0))} totali nel mese` : '';
-  $('histList').innerHTML = h.length? h.map(x=>`<div class="card"><div><strong class="when">${new Date(x.date).toLocaleDateString('it-IT',{weekday:'short',day:'numeric',month:'short'})}</strong> · ${esc((FOCUS[x.focus]||['—'])[0])} · ${esc(lbl(PLACES,x.place))}${x.complete?'':' <span class="tag fb">parziale</span>'}<p>${x.rounds}×${x.stations} · ${x.work}/${x.rest}s · ${dur(x.durationSec||0)}${x.rpe?' · RPE '+x.rpe:''}</p><p>${esc((x.exNames||[]).join(', '))}</p>${x.note?`<p><em>${esc(x.note)}</em></p>`:''}</div><div class="acts"><button class="link" data-del="${esc(x.id)}" aria-label="Elimina allenamento">✕</button></div></div>`).join('') : '<div class="empty">Nessun allenamento salvato. A fine allenamento premi "Salva nello storico".</div>';
+  $('histList').innerHTML = h.length? h.map(x=>`<div class="card"><div><strong class="when">${new Date(x.date).toLocaleDateString('it-IT',{weekday:'short',day:'numeric',month:'short'})}</strong> · ${esc((FOCUS[x.focus]||['—'])[0])} · ${esc(lbl(PLACES,x.place))}${x.complete?'':' <span class="tag fb">parziale</span>'}<p>${[x.rounds?`${x.rounds}×${x.stations} · ${x.work}/${x.rest}s`:'', ...(x.amraps||[]).map(b=>`AMRAP ${b.min}' · ${b.laps} giri`)].filter(Boolean).join(' + ')} · ${dur(x.durationSec||0)}${x.rpe?' · RPE '+x.rpe:''}</p><p>${esc((x.exNames||[]).join(', '))}</p>${x.note?`<p><em>${esc(x.note)}</em></p>`:''}</div><div class="acts"><button class="link" data-del="${esc(x.id)}" aria-label="Elimina allenamento">✕</button></div></div>`).join('') : '<div class="empty">Nessun allenamento salvato. A fine allenamento premi "Salva nello storico".</div>';
 }
 $('histList').addEventListener('click',async e=>{ const b=e.target.closest('[data-del]'); if(!b) return; if(b.dataset.armed){ try{ await store.deleteSession(b.dataset.del); }catch(err){} } else { b.dataset.armed='1'; b.textContent='Elimina?'; } });
 
