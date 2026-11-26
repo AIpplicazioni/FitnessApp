@@ -297,16 +297,14 @@ dialog textarea{width:100%;font-family:ui-monospace,monospace;font-size:12px}
 'use strict';
 // ---------- vocabulary ----------
 const PLACES = [['palestra','Palestra','Focus attuale'],['casa','Casa','Base pronta'],['outdoor','Outdoor','Base pronta']];
+// only equipment used by exercises in the library, plus cardio machines for the warm-up; kept in alphabetical order
 const EQUIP = [
- ['manubri','Manubri'],['kettlebell','Kettlebell'],['bilanciere','Bilanciere'],['panca','Panca'],['rack','Rack'],
- ['sbarra','Sbarra trazioni'],['cavi','Cavi'],['macchine','Macchine'],['landmine','Landmine'],['trx','TRX'],
- ['elastici','Elastici'],['palla_medica','Palla medica'],['slam_ball','Slam ball'],['sandbag','Sandbag'],['box','Box'],
- ['corda_battente','Battle rope'],['vogatore','Vogatore'],['bike','Bike'],['assault_bike','Assault bike'],['tapis','Tapis roulant'],['ellittica','Ellittica'],['skierg','SkiErg'],
- ['corda','Corda per saltare'],['slider','Slider'],['bosu','Bosu']
-];
-const PLACE_EQUIP = { palestra: EQUIP.map(e=>e[0]), casa:['manubri','kettlebell','elastici','corda','slider'], outdoor:['elastici','trx','sbarra','corda'] };
+ ['bike','Bici / cyclette'],['bosu','Bosu'],['corda','Corda per saltare'],['elastici','Elastici'],['ellittica','Ellittica'],['kettlebell','Kettlebell'],
+ ['manubri','Manubri'],['palla_medica','Palla medica'],['sandbag','Sandbag'],['slider','Slider'],['tapis','Tapis roulant'],['trx','TRX'],['vogatore','Vogatore']
+].sort((x,y)=>x[1].localeCompare(y[1],'it',{sensitivity:'base'}));
+const PLACE_EQUIP = { palestra: EQUIP.map(e=>e[0]), casa:['manubri','kettlebell','elastici','corda','slider'], outdoor:['elastici','trx','corda'] };
 const FORMATS = [['interval','Stazioni'],['amrap','AMRAP'],['mixed','Stazioni + AMRAP']];
-const MACHINES = { tapis:'Camminata veloce o corsa leggera, aumenta la velocità ogni 2-3 minuti.', ellittica:'Ritmo costante, resistenza bassa che aumenti gradualmente.', vogatore:'Remata fluida a bassa intensità: gambe, busto, braccia. Alza il ritmo verso la fine.', bike:'Pedalata agile, resistenza bassa che aumenti gradualmente.', assault_bike:'Ritmo blando e costante, braccia e gambe insieme.', skierg:'Tirate lunghe e leggere, ritmo progressivo.' };
+const MACHINES = { tapis:'Camminata veloce o corsa leggera, aumenta la velocità ogni 2-3 minuti.', ellittica:'Ritmo costante, resistenza bassa che aumenti gradualmente.', vogatore:'Remata fluida a bassa intensità: gambe, busto, braccia. Alza il ritmo verso la fine.', bike:'Pedalata agile, resistenza bassa che aumenti gradualmente.' };
 const WARM_MODES = [['machine','Cardio a macchina'],['body','Corpo libero (attivazione)'],['mix','Metà e metà']];
 const AUX = new Set(['warmup','mobility']);
 const DEFAULT_REPS = {squat:'10',hinge:'10',lunge:'6+6',push_h:'8',push_v:'8',pull_h:'10',pull_v:'5',core:'10',carry:'20 m',cardio:'10',arms:'10'};
@@ -403,7 +401,11 @@ const LIM = {stCount:[1,8],stEx:[1,8],stReps:[1,8],amrapMin:[3,30],amrapEx:[2,6]
 Object.keys(LIM).forEach(k=>{ S[k]=Math.min(LIM[k][1],Math.max(LIM[k][0],Number(S[k])||LIM[k][0])); });
 const STRETCH_ON=30, STRETCH_CHG=10, WARM_ON=50, WARM_CHG=10, TRANS=15;
 const saveS = () => ls.set('sp.settings',S);
-const equipFor = p => new Set(S.equip[p] || PLACE_EQUIP[p]);
+// equipment per place = place defaults + switched on − switched off (so equipment added later starts selected)
+S.equipOn = S.equipOn || {}; S.equipOff = S.equipOff || {};
+if(S.equip && Object.keys(S.equip).length){ S.equip={}; saveS(); } // old selection format: start again from all place defaults
+const KNOWN = new Set(EQUIP.map(e=>e[0]));
+const equipFor = p => { const off=new Set(S.equipOff[p]||[]); return new Set([...(PLACE_EQUIP[p]||[]),...(S.equipOn[p]||[])].filter(e=>KNOWN.has(e)&&!off.has(e))); };
 
 // ---------- tabs ----------
 const VIEWS=['train','plan','player','done','library','history'];
@@ -473,7 +475,7 @@ function planDuration(p){ return timeline(p).slice(1).reduce((a,x)=>a+x.d,0); }
 $('v-train').addEventListener('click',e=>{
   const b=e.target.closest('button'); if(!b) return;
   if(b.dataset.place){ S.place=b.dataset.place; }
-  else if(b.dataset.eq){ const eq=equipFor(S.place); eq.has(b.dataset.eq)?eq.delete(b.dataset.eq):eq.add(b.dataset.eq); S.equip[S.place]=[...eq]; }
+  else if(b.dataset.eq){ const e=b.dataset.eq, has=equipFor(S.place).has(e), on=new Set(S.equipOn[S.place]||[]), off=new Set(S.equipOff[S.place]||[]); if(has){ on.delete(e); off.add(e); } else { off.delete(e); on.add(e); } S.equipOn[S.place]=[...on]; S.equipOff[S.place]=[...off]; }
   else if(b.dataset.focus){ S.focus=b.dataset.focus; }
   else if(b.dataset.format){ S.format=b.dataset.format; }
   else if(b.dataset.wmode){ S.warmMode=b.dataset.wmode; }
