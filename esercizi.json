@@ -1,0 +1,841 @@
+[
+ {
+  "id": "ex-goblet-squat",
+  "name": "Goblet squat",
+  "pattern": "squat",
+  "equipment": [
+   "kettlebell"
+  ],
+  "places": [
+   "palestra",
+   "casa"
+  ],
+  "notes": "KB al petto, gomiti dentro le ginocchia",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-back-squat",
+  "name": "Back squat",
+  "pattern": "squat",
+  "equipment": [
+   "bilanciere",
+   "rack"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-front-squat",
+  "name": "Front squat",
+  "pattern": "squat",
+  "equipment": [
+   "bilanciere",
+   "rack"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-air-squat",
+  "name": "Air squat",
+  "pattern": "squat",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-leg-press",
+  "name": "Leg press",
+  "pattern": "squat",
+  "equipment": [
+   "macchine"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-wall-ball",
+  "name": "Wall ball",
+  "pattern": "squat",
+  "equipment": [
+   "palla_medica"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "squat + lancio al bersaglio",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-db-thruster",
+  "name": "Thruster manubri",
+  "pattern": "squat",
+  "equipment": [
+   "manubri"
+  ],
+  "places": [
+   "palestra",
+   "casa"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-db-rdl",
+  "name": "Stacco rumeno manubri",
+  "pattern": "hinge",
+  "equipment": [
+   "manubri"
+  ],
+  "places": [
+   "palestra",
+   "casa"
+  ],
+  "notes": "schiena neutra, anca indietro",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-deadlift",
+  "name": "Stacco da terra",
+  "pattern": "hinge",
+  "equipment": [
+   "bilanciere"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-kb-swing",
+  "name": "Kettlebell swing",
+  "pattern": "hinge",
+  "equipment": [
+   "kettlebell"
+  ],
+  "places": [
+   "palestra",
+   "casa"
+  ],
+  "notes": "spinta d'anca, braccia passive",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-hip-thrust",
+  "name": "Hip thrust bilanciere",
+  "pattern": "hinge",
+  "equipment": [
+   "bilanciere",
+   "panca"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-good-morning",
+  "name": "Good morning",
+  "pattern": "hinge",
+  "equipment": [
+   "bilanciere",
+   "rack"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-glute-bridge",
+  "name": "Glute bridge",
+  "pattern": "hinge",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-reverse-lunge-db",
+  "name": "Affondi indietro manubri",
+  "pattern": "lunge",
+  "equipment": [
+   "manubri"
+  ],
+  "places": [
+   "palestra",
+   "casa"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-bulgarian",
+  "name": "Bulgarian split squat",
+  "pattern": "lunge",
+  "equipment": [
+   "manubri",
+   "panca"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-step-up",
+  "name": "Step-up su box",
+  "pattern": "lunge",
+  "equipment": [
+   "box",
+   "manubri"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-walking-lunge",
+  "name": "Walking lunge",
+  "pattern": "lunge",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-lateral-lunge",
+  "name": "Affondo laterale",
+  "pattern": "lunge",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-db-bench",
+  "name": "Panca piana manubri",
+  "pattern": "push_h",
+  "equipment": [
+   "manubri",
+   "panca"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-bb-bench",
+  "name": "Panca piana bilanciere",
+  "pattern": "push_h",
+  "equipment": [
+   "bilanciere",
+   "panca",
+   "rack"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-push-up",
+  "name": "Push-up",
+  "pattern": "push_h",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-cable-press",
+  "name": "Chest press ai cavi",
+  "pattern": "push_h",
+  "equipment": [
+   "cavi"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-trx-push",
+  "name": "Push-up TRX",
+  "pattern": "push_h",
+  "equipment": [
+   "trx"
+  ],
+  "places": [
+   "palestra",
+   "outdoor"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-db-press",
+  "name": "Military press manubri",
+  "pattern": "push_v",
+  "equipment": [
+   "manubri"
+  ],
+  "places": [
+   "palestra",
+   "casa"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-landmine-press",
+  "name": "Landmine press",
+  "pattern": "push_v",
+  "equipment": [
+   "landmine",
+   "bilanciere"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-push-press",
+  "name": "Push press bilanciere",
+  "pattern": "push_v",
+  "equipment": [
+   "bilanciere",
+   "rack"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-arnold",
+  "name": "Arnold press",
+  "pattern": "push_v",
+  "equipment": [
+   "manubri"
+  ],
+  "places": [
+   "palestra",
+   "casa"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-pike-pushup",
+  "name": "Pike push-up",
+  "pattern": "push_v",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-db-row",
+  "name": "Rematore manubrio su panca",
+  "pattern": "pull_h",
+  "equipment": [
+   "manubri",
+   "panca"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-bb-row",
+  "name": "Rematore bilanciere",
+  "pattern": "pull_h",
+  "equipment": [
+   "bilanciere"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-trx-row",
+  "name": "TRX row",
+  "pattern": "pull_h",
+  "equipment": [
+   "trx"
+  ],
+  "places": [
+   "palestra",
+   "outdoor"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-seated-row",
+  "name": "Pulley basso",
+  "pattern": "pull_h",
+  "equipment": [
+   "cavi"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-face-pull",
+  "name": "Face pull",
+  "pattern": "pull_h",
+  "equipment": [
+   "cavi"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-pull-up",
+  "name": "Trazioni",
+  "pattern": "pull_v",
+  "equipment": [
+   "sbarra"
+  ],
+  "places": [
+   "palestra",
+   "outdoor"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-lat-pull",
+  "name": "Lat machine",
+  "pattern": "pull_v",
+  "equipment": [
+   "cavi"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-band-pullup",
+  "name": "Trazioni assistite con elastico",
+  "pattern": "pull_v",
+  "equipment": [
+   "sbarra",
+   "elastici"
+  ],
+  "places": [
+   "palestra",
+   "outdoor"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-plank",
+  "name": "Plank",
+  "pattern": "core",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-dead-bug",
+  "name": "Dead bug",
+  "pattern": "core",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-pallof",
+  "name": "Pallof press",
+  "pattern": "core",
+  "equipment": [
+   "cavi"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "anti-rotazione",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-russian-twist",
+  "name": "Russian twist palla medica",
+  "pattern": "core",
+  "equipment": [
+   "palla_medica"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-hollow",
+  "name": "Hollow hold",
+  "pattern": "core",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-mountain",
+  "name": "Mountain climber",
+  "pattern": "core",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-farmer",
+  "name": "Farmer walk",
+  "pattern": "carry",
+  "equipment": [
+   "manubri"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-suitcase",
+  "name": "Suitcase carry",
+  "pattern": "carry",
+  "equipment": [
+   "kettlebell"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "un solo lato, busto dritto",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-sandbag-carry",
+  "name": "Sandbag bear-hug carry",
+  "pattern": "carry",
+  "equipment": [
+   "sandbag"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-row-erg",
+  "name": "Vogatore",
+  "pattern": "cardio",
+  "equipment": [
+   "vogatore"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-assault",
+  "name": "Assault bike",
+  "pattern": "cardio",
+  "equipment": [
+   "assault_bike"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-bike",
+  "name": "Bike",
+  "pattern": "cardio",
+  "equipment": [
+   "bike"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-tread",
+  "name": "Tapis roulant sprint",
+  "pattern": "cardio",
+  "equipment": [
+   "tapis"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-ski",
+  "name": "SkiErg",
+  "pattern": "cardio",
+  "equipment": [
+   "skierg"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-battle-rope",
+  "name": "Battle rope",
+  "pattern": "cardio",
+  "equipment": [
+   "corda_battente"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-burpee",
+  "name": "Burpee",
+  "pattern": "cardio",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-slam",
+  "name": "Slam ball",
+  "pattern": "cardio",
+  "equipment": [
+   "slam_ball"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-box-jump",
+  "name": "Box jump",
+  "pattern": "cardio",
+  "equipment": [
+   "box"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-db-curl",
+  "name": "Curl manubri",
+  "pattern": "arms",
+  "equipment": [
+   "manubri"
+  ],
+  "places": [
+   "palestra",
+   "casa"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-hammer",
+  "name": "Curl martello",
+  "pattern": "arms",
+  "equipment": [
+   "manubri"
+  ],
+  "places": [
+   "palestra",
+   "casa"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-pushdown",
+  "name": "Pushdown ai cavi",
+  "pattern": "arms",
+  "equipment": [
+   "cavi"
+  ],
+  "places": [
+   "palestra"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ },
+ {
+  "id": "ex-db-french",
+  "name": "French press manubrio",
+  "pattern": "arms",
+  "equipment": [
+   "manubri"
+  ],
+  "places": [
+   "palestra",
+   "casa"
+  ],
+  "notes": "",
+  "active": true,
+  "example": true
+ }
+]
