@@ -733,5 +733,227 @@
   "desc": "Plank con avambracci o mani sul bosu: solleva una gamba alla volta mantenendo il bacino fermo.",
   "img": "",
   "ref": "https://www.google.com/search?tbm=isch&q=bosu+plank+leg+lift"
+ },
+ {
+  "id": "wu-jumping-jack",
+  "name": "Jumping jack",
+  "pattern": "warmup",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "Senza pesi, ritmo progressivo",
+  "active": true,
+  "desc": "Salta aprendo gambe e braccia sopra la testa, poi richiudi. Ritmo costante, atterraggio morbido sull'avampiede.",
+  "ref": "https://www.google.com/search?tbm=isch&q=jumping+jack"
+ },
+ {
+  "id": "wu-skip",
+  "name": "Skip sul posto",
+  "pattern": "warmup",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "Senza pesi, ritmo progressivo",
+  "active": true,
+  "desc": "Corsa sul posto portando le ginocchia all'altezza dell'anca, braccia coordinate, busto alto.",
+  "ref": "https://www.google.com/search?tbm=isch&q=skip+alto+corsa",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Fast_Skipping/0.jpg"
+ },
+ {
+  "id": "wu-calciata",
+  "name": "Corsa calciata",
+  "pattern": "warmup",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "Senza pesi, ritmo progressivo",
+  "active": true,
+  "desc": "Corsa sul posto portando i talloni verso i glutei, appoggio sull'avampiede.",
+  "ref": "https://www.google.com/search?tbm=isch&q=butt+kicks+exercise",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Single_Leg_Butt_Kick/0.jpg"
+ },
+ {
+  "id": "wu-squat-lento",
+  "name": "Squat a corpo libero lento",
+  "pattern": "warmup",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "Senza pesi, ritmo progressivo",
+  "active": true,
+  "desc": "Squat controllato: 3 secondi in discesa, pausa in basso, risali. Talloni a terra, ginocchia in linea con le punte.",
+  "ref": "https://www.google.com/search?tbm=isch&q=bodyweight+squat",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Bodyweight_Squat/0.jpg"
+ },
+ {
+  "id": "wu-inchworm",
+  "name": "Inchworm",
+  "pattern": "warmup",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "Senza pesi, ritmo progressivo",
+  "active": true,
+  "desc": "Da in piedi piega il busto, cammina con le mani fino al plank, poi torna indietro con le mani e risali.",
+  "ref": "https://www.google.com/search?tbm=isch&q=inchworm+exercise",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Inchworm/0.jpg"
+ },
+ {
+  "id": "wu-worlds-greatest",
+  "name": "World's greatest stretch",
+  "pattern": "warmup",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "Senza pesi, ritmo progressivo",
+  "active": true,
+  "desc": "Affondo profondo, mano a terra all'interno del piede avanti, gomito verso la caviglia, poi ruota il busto aprendo il braccio verso l'alto. Alterna i lati.",
+  "ref": "https://www.google.com/search?tbm=isch&q=worlds+greatest+stretch",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Worlds_Greatest_Stretch/0.jpg"
+ },
+ {
+  "id": "wu-arm-circles",
+  "name": "Circonduzioni braccia",
+  "pattern": "warmup",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "Senza pesi, ritmo progressivo",
+  "active": true,
+  "desc": "Braccia tese di lato, cerchi da piccoli a grandi, avanti e poi indietro.",
+  "ref": "https://www.google.com/search?tbm=isch&q=arm+circles+exercise",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Arm_Circles/0.jpg"
+ },
+ {
+  "id": "wu-hip-circles",
+  "name": "Rotazioni delle anche",
+  "pattern": "warmup",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "Senza pesi, ritmo progressivo",
+  "active": true,
+  "desc": "In piedi, mani sui fianchi, ampi cerchi con il bacino in entrambi i sensi. In alternativa ginocchio alto e rotazione dell'anca in apertura.",
+  "ref": "https://www.google.com/search?tbm=isch&q=hip+circles+standing",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Standing_Hip_Circles/0.jpg"
+ },
+ {
+  "id": "wu-affondo-camminato",
+  "name": "Affondo camminato",
+  "pattern": "warmup",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "Senza pesi, ritmo progressivo",
+  "active": true,
+  "desc": "Affondi in avanti alternati camminando, busto eretto, ginocchio posteriore vicino a terra.",
+  "ref": "https://www.google.com/search?tbm=isch&q=walking+lunge+bodyweight",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Bodyweight_Walking_Lunge/0.jpg"
+ },
+ {
+  "id": "wu-glute-bridge",
+  "name": "Ponte glutei",
+  "pattern": "warmup",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "Senza pesi, ritmo progressivo",
+  "active": true,
+  "desc": "Supino, piedi a terra vicino ai glutei: solleva il bacino stringendo i glutei, pausa in alto, scendi lento.",
+  "ref": "https://www.google.com/search?tbm=isch&q=glute+bridge",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Butt_Lift_Bridge/0.jpg"
+ },
+ {
+  "id": "wu-superman",
+  "name": "Superman",
+  "pattern": "warmup",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "Senza pesi, ritmo progressivo",
+  "active": true,
+  "desc": "Prono, solleva insieme braccia e gambe tese di pochi centimetri, tieni 2 secondi e rilascia.",
+  "ref": "https://www.google.com/search?tbm=isch&q=superman+exercise",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Superman/0.jpg"
+ },
+ {
+  "id": "wu-cat-cow",
+  "name": "Gatto-mucca",
+  "pattern": "warmup",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "Senza pesi, ritmo progressivo",
+  "active": true,
+  "desc": "In quadrupedia alterna schiena arrotondata (sguardo all'ombelico) e schiena inarcata (sguardo avanti), respirando lento.",
+  "ref": "https://www.google.com/search?tbm=isch&q=cat+cow+stretch",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Cat_Stretch/0.jpg"
+ },
+ {
+  "id": "wu-bird-dog",
+  "name": "Bird dog",
+  "pattern": "warmup",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "Senza pesi, ritmo progressivo",
+  "active": true,
+  "desc": "In quadrupedia estendi braccio e gamba opposti, tieni 2 secondi senza ruotare il bacino, alterna.",
+  "ref": "https://www.google.com/search?tbm=isch&q=bird+dog+exercise"
+ },
+ {
+  "id": "wu-carioca",
+  "name": "Passo carioca",
+  "pattern": "warmup",
+  "equipment": [],
+  "places": [
+   "palestra",
+   "casa",
+   "outdoor"
+  ],
+  "notes": "Senza pesi, ritmo progressivo",
+  "active": true,
+  "desc": "Spostamento laterale incrociando la gamba davanti e dietro, anche che ruotano, poi cambia direzione.",
+  "ref": "https://www.google.com/search?tbm=isch&q=carioca+drill",
+  "img": "https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/Carioca_Quick_Step/0.jpg"
  }
 ]
